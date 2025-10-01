@@ -1,0 +1,1 @@
+export const SVG_PATH = '../assets/icons.svg';
