@@ -66,6 +66,8 @@ export function initTogglePasswordVisibility() {
   toggleEyeBtns.forEach((eyeBtn, index) => {
     eyeBtn.addEventListener('click', () => {
       const useTag = eyeBtn.querySelector('use');
+      if (!useTag) return; // safety check
+
       const currentIcon = useTag.getAttribute('xlink:href');
 
       const inputFieldClicked = passwordInputFields[index];
