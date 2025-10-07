@@ -1,5 +1,5 @@
 import * as menuView from '../menuView.js';
-import { ThemeManager } from '../../models/themeManager.js';
+import { ThemeManager } from '../../models/ui/themeManager.js';
 
 class ModeAndTheme {
   constructor() {

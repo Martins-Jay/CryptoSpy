@@ -1,6 +1,6 @@
 import * as menuView from '../menuView.js';
 import { fontActionsObj } from './fontsMobileView.js';
-import { fontsModel } from '../../models/fontModel.js';
+import { fontsModel } from '../../models/ui/fontModel.js';
 
 class FontsMediumActions {
   constructor() {
@@ -160,9 +160,7 @@ class FontsMediumActions {
   }
 
   updateActiveTheme(fontName) {
-    this.activeFontEl = document.getElementById(
-      'active-font-name'
-    );
+    this.activeFontEl = document.getElementById('active-font-name');
     console.log(this.activeFontEl);
 
     this.activeFontEl.textContent = '';

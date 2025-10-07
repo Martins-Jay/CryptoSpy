@@ -1,4 +1,4 @@
-import { ThemeManager } from '../../models/themeManager.js';
+import { ThemeManager } from '../../models/ui/themeManager.js';
 
 class ModeThemeLarge {
   constructor() {
@@ -172,8 +172,6 @@ class ModeThemeLarge {
     this.positionActiveIndicator(mode);
     this.updateActiveModeStatus();
   }
-
-
 }
 
 export const modeThemeLargeObj = new ModeThemeLarge();

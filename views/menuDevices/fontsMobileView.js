@@ -1,5 +1,5 @@
 import * as menuView from '../menuView.js';
-import { fontsModel } from '../../models/fontModel.js';
+import { fontsModel } from '../../models/ui/fontModel.js';
 
 class FontsActions {
   constructor() {
@@ -28,7 +28,6 @@ class FontsActions {
   // Generate HTML markup for each font
   generateFontMarkup({ action, id, value, fontName, title }) {
     const activeFont = this.getCurrentFont();
-    console.log(activeFont);
 
     const indicator =
       fontName === activeFont ? this.activeIndicatorTemplate() : '';
@@ -37,7 +36,7 @@ class FontsActions {
       <!-- Font 1 wrapper -->
       <div data-action="${action}"
         id="${id}"
-        class="flex items-center justify-between p-4 rounded-lg border-0"
+        class="flex items-center justify-between p-4 rounded-lg border-0 cursor-pointer"
       >
         <!-- font title -->
         <div

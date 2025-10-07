@@ -1,6 +1,6 @@
 import * as menuView from '../menuView.js';
 import { fontActionsObj } from './fontsMobileView.js';
-import { fontsModel } from '../../models/fontModel.js';
+import { fontsModel } from '../../models/ui/fontModel.js';
 
 class FontsMediumActions {
   constructor() {
@@ -155,7 +155,8 @@ class FontsMediumActions {
   }
 
   clearIndicatorEls() {
-    const btnWrapperEls = this.contentArea.querySelectorAll('.highlight-wrapper');
+    const btnWrapperEls =
+      this.contentArea.querySelectorAll('.highlight-wrapper');
     console.log(btnWrapperEls);
 
     btnWrapperEls.forEach((btnWrapperEl) => (btnWrapperEl.innerHTML = ''));
@@ -180,7 +181,7 @@ class FontsMediumActions {
     this.fontName = fontName;
     fontsModel.applyAndSaveFont(this.fontName);
     this.activateIndicator(this.fontName);
-    this.updateActiveTheme(fontName)
+    this.updateActiveTheme(fontName);
   }
 }
 

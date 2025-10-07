@@ -1,4 +1,4 @@
-import { ThemeManager } from '../../models/themeManager.js';
+import { ThemeManager } from '../../models/ui/themeManager.js';
 
 class ModeAndThemeMediumView {
   constructor() {
@@ -163,25 +163,25 @@ class ModeAndThemeMediumView {
   toggleSystem(mode) {
     this.themeManagerObj.setUserTheme(mode);
     this.positionActiveIndicator(mode);
-    this.updateActiveTheme(mode)
+    this.updateActiveTheme(mode);
   }
 
   toggleLight(mode) {
     this.themeManagerObj.setUserTheme(mode);
     this.positionActiveIndicator(mode);
-    this.updateActiveTheme(mode)
+    this.updateActiveTheme(mode);
   }
 
   toggleDark(mode) {
     this.themeManagerObj.setUserTheme(mode);
     this.positionActiveIndicator(mode);
-    this.updateActiveTheme(mode)
+    this.updateActiveTheme(mode);
   }
 
   toggleDefault(mode) {
     this.themeManagerObj.setUserTheme(mode);
     this.positionActiveIndicator(mode);
-    this.updateActiveTheme(mode)
+    this.updateActiveTheme(mode);
   }
 }
 

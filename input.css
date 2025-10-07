@@ -28,7 +28,7 @@
 
 @layer components {
   .svg-icon-border {
-    @apply flex w-10 h-10 items-center justify-center border-2  rounded-full shadow-2xl border-iconBorder-subtle focus:outline-none light:border-border-Light;
+    @apply flex w-10 h-10 items-center justify-center rounded-full shadow-2xl border-iconBorder-subtle focus:outline-none light:border-border-Light;
   }
 }
 
