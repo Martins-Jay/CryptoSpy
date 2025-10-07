@@ -1,4 +1,4 @@
-import { SVG_PATH } from '../config/config.js';
+import { SVG_PATH } from '../../config/config.js';
 
 export async function loadSVGSprite() {
   try {

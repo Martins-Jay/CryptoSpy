@@ -65,8 +65,9 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          // <-- NEW object for brand colors
+          // <-- NEW object for brand colors //nice === #0EA5A3
           DEFAULT: '#f59e0b', // your main brand yellow
+          body: '#404040',
           dark: '#d97706', // optional for active/tap states
           light: '#fbbf24', // optional for hover/highlight
         },
@@ -93,26 +94,22 @@ module.exports = {
         textBase: {
           primary: '#ffffff', // white → headings, primary labels
           secondary: '#d1d5db', // gray-300 → secondary (email, UID, hints)
+          brandLighter: '#ffc94a',
+          textColor: '#404040',
           muted: '#9ca3af', // gray-400 → meta info, less focus
-          emerald: '#34d399', // emerald-400 -> "crypto" (brand highlight)
-          darkGray: '#6B7280', // gray-500 → "SPY" (subtle, neutral balance)
+          darkGray: '#A3A3A3', // gray-500 → "SPY" (subtle, neutral balance)
           error: '#fb7185', // Auth error
         },
 
         // Icon border wrappers
         iconBorder: {
-          subtle: '#2d2d2d', // soft solid border
+          subtle: '#737373', // soft solid border previous: #2d2d2d
           visible: '#3a3a3a', // stronger border
           glass: 'rgba(255,255,255,0.12)', // premium glass-style border
         },
 
         // Buttons
-        btn: {
-          primary: '#3b82f6', // primary CTAs
-          primaryHover: '#2563eb', // hover (darker blue)
-          secondary: '#374151', // neutral-700 → filters, minor actions
-          secondaryHover: '#4b5563', // neutral-600 → hover
-        },
+        btn: {},
 
         // Borders & Dividers
         border: {

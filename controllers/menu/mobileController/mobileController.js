@@ -1,17 +1,17 @@
-import * as menuView from '../../views/menuView.js';
-import * as domHelpers from '../../helpers/domHelpers.js';
-import { modeAndThemeMediumViewObj } from '../../views/menuDevices/modeThemeMediumView.js';
-import { fontsMediumActionsObj } from '../../views/menuDevices/fontsMediumView.js';
+import * as menuView from '../../../views/menuView.js';
+import * as domHelpers from '../../../helpers/domHelpers.js';
+import { modeAndThemeMediumViewObj } from '../../../views/menuDevices/modeThemeMediumView.js';
+import { fontsMediumActionsObj } from '../../../views/menuDevices/fontsMediumView.js';
 
-import MobileMenuController from './mobileMenuController.js';
-import MediumMenuController from './mediumMenuController.js';
-import LargeMenuController from './largeMenuController.js';
+import MobileMenuController from '../mobileMenuController.js';
+import MediumMenuController from '../mediumMenuController.js';
+import LargeMenuController from '../largeMenuController.js';
 
 import {
   dashboardSectionEl,
   authSectionEl,
   loaderEl,
-} from '../../views/authView.js';
+} from '../../../views/authView.js';
 
 import {
   mainMenuObj,
@@ -20,9 +20,9 @@ import {
   modeAndThemeMenuObj,
   fontsMenuObj,
   navMenuObj,
-} from './menuActions.js';
-import { subscribe } from '../../helpers/pubsub.js';
-import { observeUser } from '../../models/authModel.js';
+} from '../../publisher/menuPublisher.js';
+import { subscribe } from '../../../helpers/pubsub.js';
+import { observeUser } from '../../../models/auth/authModel.js';
 
 // ------------------------------------------------
 // Flag to ensure we dont attach subscriber twice
@@ -58,7 +58,7 @@ export function updateUserInfo(user) {
 
 function renderMenusForUser(user) {
   if (user) {
-    domHelpers.showSection(dashboardSectionEl, authSectionEl);
+    // domHelpers.showSection(dashboardSectionEl, authSectionEl);
     updateUserInfo(user);
   } else {
     menuView.onLogoutObj.forScreen('mobile');

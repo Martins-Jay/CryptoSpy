@@ -1,11 +1,11 @@
-import { auth } from "../firebase/firebaseInit.js";
+import { auth } from '../../firebase/firebaseInit.js';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
   updateProfile,
-} from "../firebase/firebaseInit.js";
+} from '../../firebase/firebaseInit.js';
 
 // Sign up
 export async function registerUser(name, email, password) {
@@ -43,7 +43,7 @@ export async function loginUser(email, password) {
 // Authentication observer
 export function observeUser(callback) {
   onAuthStateChanged(auth, (user) => {
-    callback(user);
+    callback(user || null);
   });
 }
 

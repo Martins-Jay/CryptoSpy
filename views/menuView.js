@@ -5,8 +5,8 @@ import { renderTemplate } from '../helpers/templateHelper.js';
 import { dashboardSectionEl, authSectionEl } from '../views/authView.js';
 import { modeAndThemeMediumViewObj } from './menuDevices/modeThemeMediumView.js';
 import { fontsMediumActionsObj } from './menuDevices/fontsMediumView.js';
-import { ThemeManager } from '../../models/themeManager.js';
-import { fontsModel } from '../models/fontModel.js';
+import { ThemeManager } from '../models/ui/themeManager.js';
+import { fontsModel } from '../models/ui/fontModel.js';
 
 import * as domHelpers from '../helpers/domHelpers.js';
 import { publish } from '../helpers/pubsub.js';
@@ -327,9 +327,6 @@ class MenuActions {
 // OnLogout: preserve API with original method names
 class OnLogout {
   mobileDevice() {
-    // show/hide main sections and ensure mobile menus are closed
-    domHelpers.showAndHideRest(authSectionEl, dashboardSectionEl);
-
     menuElements.mobileSettings.aside?.classList.add('hidden');
     menuElements.mobileSettings.contentArea?.classList.add('translate-x-full');
 

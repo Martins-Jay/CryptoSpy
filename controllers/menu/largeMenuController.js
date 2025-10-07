@@ -3,7 +3,8 @@ import { subscribe } from '../../helpers/pubsub.js';
 import { navViewObj } from '../../views/navView.js';
 import { modeThemeLargeObj } from '../../views/menuDevices/modeThemeLarge.js';
 import { fontsLargeObj } from '../../views/menuDevices/fontsLarge.js';
-import { logoutUser } from '../../models/authModel.js';
+import { logoutUser } from '../../models/auth/authModel.js';
+import { greetingObj } from '../../views/components/homeComponents/greetingView.js';
 
 class LargeMenuController {
   constructor() {
@@ -16,6 +17,7 @@ class LargeMenuController {
       'logout-for-large': async () => {
         await logoutUser();
         navViewObj.handleAppReset();
+        greetingObj.clearName();
       },
 
       'profile-dropdown': () => {

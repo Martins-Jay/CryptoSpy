@@ -1,7 +1,8 @@
 import { subscribe } from '../../helpers/pubsub.js';
 import { modeAndThemeMediumViewObj } from '../../views/menuDevices/modeThemeMediumView.js';
 import { fontsMediumActionsObj } from '../../views/menuDevices/fontsMediumView.js';
-import { logoutUser } from '../../models/authModel.js';
+import { logoutUser } from '../../models/auth/authModel.js';
+import { greetingObj } from '../../views/components/homeComponents/greetingView.js';
 
 class MediumMenuController {
   constructor() {
@@ -38,8 +39,8 @@ class MediumMenuController {
 
       // Logout
       logout: async () => {
-        const { logoutUser } = await import('../../models/authModel.js');
         await logoutUser();
+        greetingObj.clearName()
       },
     };
 

@@ -1,11 +1,15 @@
-import * as AuthController from './authController.js';
-import * as MenuController from './menu/menuController.js';
+import * as AuthController from './auth/authController.js';
+import * as MenuController from './menu/mobileController/mobileController.js';
 import { initMenuButtons } from '../views/menuView.js';
-import { loadSVGSprite } from './iconController.js';
-import { themeManager } from '../models/themeManager.js';
+import { loadSVGSprite } from './SpriteSVGController/iconController.js';
+import { themeManager } from '../models/ui/themeManager.js';
 import { fontActionsObj } from '../views/menuDevices/fontsMobileView.js';
+import { greetingControllerObj } from './home/greetingController.js';
+import sessionController from './session/sessionController.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  sessionController.init();
+
   // Load THE SPRITE AT ONCE
   loadSVGSprite();
 
@@ -18,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   AuthController.initTogglePasswordVisibility();
   AuthController.handleLoginValidation();
   AuthController.handleSignupValidation();
+  greetingControllerObj.initGreetingUi();
 
   initMenuButtons();
 

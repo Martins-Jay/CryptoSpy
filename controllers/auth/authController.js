@@ -1,8 +1,12 @@
-import * as authView from '../views/authView.js';
-import * as authModel from '../models/authModel.js';
-import * as formValidator from '../helpers/formValidator.js';
-import * as domHelpers from '../helpers/domHelpers.js';
-import { updateUserInfo } from './menu/menuController.js';
+import * as authView from '../../views/authView.js';
+import * as authModel from '../../models/auth/authModel.js';
+import * as formValidator from '../../helpers/formValidator.js';
+import { updateUserInfo } from '../menu/mobileController/mobileController.js';
+import { greetingControllerObj } from '../home/greetingController.js';
+import { viewManager } from '../viewManager/viewManager.js';
+import * as domHelpers from '../../helpers/domHelpers.js';
+import { dashboardSectionEl } from '../../views/authView.js';
+import { authSectionEl } from '../../views/authView.js';
 
 const {
   loginForm,
@@ -126,8 +130,18 @@ export function handleLoginValidation() {
       try {
         loaderEl.classList.remove('hidden');
 
-        const user = await loginUser(loginEmail, loginPassword);
+        const userCredientalObj = await loginUser(loginEmail, loginPassword);
+        const userName = userCredientalObj.user.displayName;
+
+        // greetingObj.renderGreeting(userName); // Pass the logged in user to this method for the home greeting section
+
         form.reset();
+
+        viewManager.hideAndShowRest(
+          'auth-section',
+          'dashboard-section',
+          'dashboard-header'
+        );
       } catch (error) {
         const formattedError = error.code
           ? error.code.replace('auth/', '').replace('-', ' ')
@@ -141,11 +155,6 @@ export function handleLoginValidation() {
       } finally {
         loaderEl.classList.add('hidden');
       }
-
-      setTimeout(() => {
-        loaderEl.classList.add('hidden'); // Hide loader after 4sec
-        signupForm.reset(); // Clear input form
-      }, 4000);
     }
   });
 }
@@ -180,7 +189,7 @@ export function handleSignupValidation() {
 
     const form = e.target; // The form element
     const { signupName, signupEmail, signupPassword } = getSignupFormData();
-    console.log(signupName, signupEmail, signupPassword);
+    localStorage.setItem('username', signupName);
 
     // Name validate
     const nameValid = validateInputField(
@@ -226,15 +235,24 @@ export function handleSignupValidation() {
       try {
         loaderEl.classList.remove('hidden'); // Show spinner
 
+        // Ensures the username is rendered before the async fetches username
+        greetingControllerObj.initGreetingUi();
+
         const user = await registerUser(
           signupName,
           signupEmail,
           signupPassword
         );
 
-        updateUserInfo(user);
+        updateUserInfo(user); // Pass the signed in user to this method for menu
+
         changeAuthView();
-        document.getElementById('auth-section').classList.add('hidden');
+        
+        viewManager.hideAndShowRest(
+          'auth-section',
+          'dashboard-section',
+          'dashboard-header'
+        );
 
         form.reset(); // Clear form inputs
       } catch (error) {
@@ -245,7 +263,7 @@ export function handleSignupValidation() {
         emailErrContainerEl.classList.remove('hidden');
         emailErrTextEl.textContent = formattedError;
       } finally {
-        loaderEl.classList.add('hidden'); // Show spinner
+        loaderEl.classList.add('hidden'); // hide spinner
       }
     }
   });

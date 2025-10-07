@@ -1,10 +1,11 @@
 // controllers/menus/mobileMenuController.js
 import { subscribe } from '../../helpers/pubsub.js';
-import { logoutUser } from '../../models/authModel.js';
+import { logoutUser } from '../../models/auth/authModel.js';
 import { settingsActionsObj } from '../../views/settingsView.js';
 import { modeAndThemeObj } from '../../views/menuDevices/modeThemeMobileView.js';
 import { fontActionsObj } from '../../views/menuDevices/fontsMobileView.js';
 import * as menuView from '../../views/menuView.js';
+import { greetingObj } from '../../views/components/homeComponents/greetingView.js';
 
 class MobileMenuController {
   constructor() {
@@ -32,12 +33,16 @@ class MobileMenuController {
     if (action === 'mode-theme') {
       settingsActionsObj.toggleModeThemeState();
       modeAndThemeObj.renderModeTemplate();
+      modeAndThemeObj.restoreHighlight();
     }
     if (action === 'show-font-pannel') {
       settingsActionsObj.toggleFontState();
       fontActionsObj.renderFonts();
     }
-    if (action === 'logout') await logoutUser();
+    if (action === 'logout') {
+      await logoutUser();
+      greetingObj.clearName()
+    }
   }
 
   // --- Mode & Theme ---
@@ -60,16 +65,21 @@ class MobileMenuController {
     }
     if (action === 'activate-font-1') fontActionsObj.activateFont('inter');
     if (action === 'activate-font-2') fontActionsObj.activateFont('rubik');
-    if (action === 'activate-font-3') fontActionsObj.activateFont('spaceGrotesk');
+    if (action === 'activate-font-3')
+      fontActionsObj.activateFont('spaceGrotesk');
     if (action === 'activate-font-4') fontActionsObj.activateFont('spectral');
-    if (action === 'activate-font-5') fontActionsObj.activateFont('tagesschrift');
+    if (action === 'activate-font-5')
+      fontActionsObj.activateFont('tagesschrift');
   }
 
   // --- Subscriptions Setup ---
   _setupSubscriptions() {
     subscribe('menu:mobile:action', this._handleMenuActions.bind(this));
     subscribe('settings:mobile:action', this._handleSettingsActions.bind(this));
-    subscribe('settings:modeAndTheme:action', this._handleModeAndThemeActions.bind(this));
+    subscribe(
+      'settings:modeAndTheme:action',
+      this._handleModeAndThemeActions.bind(this)
+    );
     subscribe('settings:fonts:action', this._handleFontActions.bind(this));
   }
 }

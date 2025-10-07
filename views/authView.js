@@ -32,9 +32,7 @@ export function clearLoginErrors() {
   ];
 
   loginErrElements.forEach((elementID) => {
-    console.log(elementID);
     const hiddenEl = document.getElementById(elementID);
-    console.log(hiddenEl);
     if (hiddenEl) hiddenEl.classList.add('hidden')
   });
 } 
@@ -48,9 +46,7 @@ export function clearSignupErrors() {
   ];
 
   loginErrElements.forEach((elementID) => {
-    console.log(elementID);
     const hiddenEl = document.getElementById(elementID);
-    console.log(hiddenEl);
     if (hiddenEl) hiddenEl.classList.add('hidden')
   });
 }

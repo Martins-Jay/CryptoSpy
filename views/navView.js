@@ -1,9 +1,9 @@
-import { ThemeManager } from '../../models/themeManager.js';
-import { fontsModel } from '../models/fontModel.js';
+import { ThemeManager } from '../models/ui/themeManager.js';
+import { fontsModel } from '../models/ui/fontModel.js';
 
 class NavView {
   constructor() {
-    this.bodyEl = document.querySelector('.body')
+    this.bodyEl = document.querySelector('.body');
     this.themeManagerObj = new ThemeManager();
     this.headerEl = document.getElementById('header');
     this.profileBtnEl = null;
@@ -59,7 +59,7 @@ class NavView {
     // Update theme text before showing
     const activeTheme = this.themeManagerObj.getCurrentMode();
     this.activeThemeNameEl.innerHTML = activeTheme;
-    this.activeFontNameEl.innerHTML = fontsModel.getFont()
+    this.activeFontNameEl.innerHTML = fontsModel.getFont();
 
     this.toggleDropdown(this.settingsBtnEl);
   }
@@ -76,11 +76,11 @@ class NavView {
   }
 
   handleAppReset() {
-    [this.profileBtnEl, this.settingsBtnEl].forEach(btnEl => {
-      if(btnEl && btnEl.classList.contains('opacity-100')) {
+    [this.profileBtnEl, this.settingsBtnEl].forEach((btnEl) => {
+      if (btnEl && btnEl.classList.contains('opacity-100')) {
         this.hideDropdown(btnEl);
       }
-    })
+    });
   }
 }
 

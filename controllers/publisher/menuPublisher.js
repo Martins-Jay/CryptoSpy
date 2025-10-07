@@ -15,7 +15,7 @@ class Menu {
       const action = actionEl.dataset.action;
       const screen = this._parentEl.dataset.screen;
       const theme = modeEl?.dataset.mode;
-      console.log(action, screen, theme);
+      // console.log(action, screen, theme);
       publish(this._channel, { action, device: screen, mode: theme });
     });
   }
