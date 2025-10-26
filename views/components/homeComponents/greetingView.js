@@ -14,9 +14,8 @@ class Greeting {
         <!-- Desktop/Tablet Username -->
         <span
           id="user-display-name"
-          class="hidden md:inline lg:inline font-bold md:text-xl lg:text-2xl capitalize"
+          class="hidden md:inline lg:inline font-semibold md:text-xl lg:text-2xl capitalize"
         >
-          
         </span>
       </div>
 

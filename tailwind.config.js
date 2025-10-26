@@ -5,8 +5,10 @@ module.exports = {
   content: [
     './index.html',
     './views/menuDevices/**/*.js', // all JS files in menuDevices folder
+    './views/components/homeComponents/**/*.js',
     './views/devices/**/*.js', // if you still have devices folder
     './controllers/menus/**/*.js', // JS controllers that may have dynamic classes
+    './views/components/homeComponents/marketView.js',
   ],
 
   // Important for SVGs injected by javascript
@@ -29,6 +31,7 @@ module.exports = {
     'bg-black',
     'bg-brand',
     'bg-appBg-white',
+    'bg-gray-800',
     'bg-appBg-black',
     'dark:bg-appBg-white',
     'light:bg-appBg-black',
@@ -53,6 +56,7 @@ module.exports = {
     'w-[100px]',
     'h-[160px]',
     'lg:py-1',
+    'font-black',
   ],
   theme: {
     screens: {
@@ -121,7 +125,7 @@ module.exports = {
 
         // States
         state: {
-          success: '#34d399', // green-400
+          success: '#22C55E', // green-400
           error: '#f87171', // red-400
           warning: '#facc15', // yellow-400
         },

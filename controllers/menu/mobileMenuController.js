@@ -41,7 +41,7 @@ class MobileMenuController {
     }
     if (action === 'logout') {
       await logoutUser();
-      greetingObj.clearName()
+      greetingObj.clearName();
     }
   }
 

@@ -6,7 +6,7 @@ class GreetingModel {
       currentHour < 12
         ? 'Good Morning'
         : currentHour < 18
-        ? 'Good Afternoom'
+        ? 'Good Afternoon'
         : 'Good Evening';
 
     return greeting;

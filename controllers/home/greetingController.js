@@ -6,7 +6,7 @@ class GreetingController {
   constructor() {}
 
   initGreetingUi() {
-    const greetingText = greetingModelObj.greetingMessage()
+    const greetingText = greetingModelObj.greetingMessage();
     const cachedName = localStorage.getItem('username');
 
     // Show cached name immediately to avoid delay

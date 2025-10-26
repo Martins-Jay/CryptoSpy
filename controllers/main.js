@@ -6,8 +6,14 @@ import { themeManager } from '../models/ui/themeManager.js';
 import { fontActionsObj } from '../views/menuDevices/fontsMobileView.js';
 import { greetingControllerObj } from './home/greetingController.js';
 import sessionController from './session/sessionController.js';
+import { portfolioController } from './home/portfolioController.js';
+import MarketModel from '../models/market/marketModel.js';
+import { marketController } from './home/market/marketController.js';
+import { viewMoreController } from './home/market/viewMoreController.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+const marketModel = new MarketModel();
+
+document.addEventListener('DOMContentLoaded', async () => {
   sessionController.init();
 
   // Load THE SPRITE AT ONCE
@@ -23,6 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
   AuthController.handleLoginValidation();
   AuthController.handleSignupValidation();
   greetingControllerObj.initGreetingUi();
+  portfolioController.initPortfolioSummary();
+  await marketController.init();
+  await viewMoreController.init();
 
   initMenuButtons();
 

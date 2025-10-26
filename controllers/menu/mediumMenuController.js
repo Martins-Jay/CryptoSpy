@@ -40,7 +40,7 @@ class MediumMenuController {
       // Logout
       logout: async () => {
         await logoutUser();
-        greetingObj.clearName()
+        greetingObj.clearName();
       },
     };
 
