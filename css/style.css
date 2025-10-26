@@ -771,10 +771,6 @@ input.input-style:-webkit-autofill {
   pointer-events: none;
 }
 
-.visible{
-  visibility: visible;
-}
-
 .invisible{
   visibility: hidden;
 }
@@ -880,10 +876,6 @@ input.input-style:-webkit-autofill {
   margin-top: 1.5rem;
 }
 
-.mb-8{
-  margin-bottom: 2rem;
-}
-
 .block{
   display: block;
 }
@@ -906,10 +898,6 @@ input.input-style:-webkit-autofill {
 
 .h-10{
   height: 2.5rem;
-}
-
-.h-11{
-  height: 2.75rem;
 }
 
 .h-12{
@@ -962,10 +950,6 @@ input.input-style:-webkit-autofill {
 
 .h-screen{
   height: 100vh;
-}
-
-.h-1{
-  height: 0.25rem;
 }
 
 .max-h-0{
@@ -1059,10 +1043,6 @@ input.input-style:-webkit-autofill {
 
 .rotate-180{
   --tw-rotate: 180deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.transform{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
