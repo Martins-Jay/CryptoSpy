@@ -21,6 +21,18 @@
 }
 
 @layer components {
+  /* Hide scrollbar but keep scrolling enabled */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* Internet Explorer and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+@layer components {
   .errorMsg-style {
     @apply text-textBase-error text-[12px];
   }

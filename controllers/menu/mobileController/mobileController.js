@@ -7,11 +7,7 @@ import MobileMenuController from '../mobileMenuController.js';
 import MediumMenuController from '../mediumMenuController.js';
 import LargeMenuController from '../largeMenuController.js';
 
-import {
-  dashboardSectionEl,
-  authSectionEl,
-  loaderEl,
-} from '../../../views/authView.js';
+import { loaderEl } from '../../../views/authView.js';
 
 import {
   mainMenuObj,
@@ -58,7 +54,6 @@ export function updateUserInfo(user) {
 
 function renderMenusForUser(user) {
   if (user) {
-    // domHelpers.showSection(dashboardSectionEl, authSectionEl);
     updateUserInfo(user);
   } else {
     menuView.onLogoutObj.forScreen('mobile');

@@ -541,7 +541,7 @@
     <section id="dashboard-header" class="hidden pt-2 px-6 md:px-10">
       <div
         id="dashboard-header__container"
-        class="flex items-center justify-between rounded-2xl shadow-sm"
+        class="flex items-center justify-between rounded-2xl"
       >
         <div class="w-full flex flex-col space-y-4 md:space-y-4">
           <!--  Greeting area  -->
@@ -553,64 +553,175 @@
           <div
             id="portfolio-summary"
             class="flex flex-col justify-between mt-4 space-y-1"
+          ></div>
+
+          <!-- PROFIT / LOSS AREA  -->
+          <div id="portfolio-pnl" class="flex flex-col space-y-1"></div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="market-section"
+      class="flex flex-col w-full px-6 py-6 md:px-10 md:py-10 lg:flex-row lg:justify-center lg:space-x-10"
+    >
+      <!-- Intro section -->
+      <div
+        id="intro-container"
+        class="hidden md:flex lg:flex items-center px-6 space-x-4 md:pb-4 lg:w-3/4"
+      ></div>
+
+      <!-- Market section -->
+      <div
+        id="market-container"
+        class="px-4 py-3 space-y-2 rounded-lg shadow-md bg-menuCard-glass light:bg-menuCard-menuLightBg md:px-6 md:py-5 md:rounded-xl md:shadow-md lg:px-10 lg:py-8 lg:space-y-4"
+      >
+        <!-- Category Tabs -->
+        <div
+          id="market-tabs"
+          class="flex text-md space-x-6 overflow-x-auto whitespace-nowrap no-scrollbar"
+        ></div>
+
+        <!-- Market list -->
+        <div id="market-list" class="flex flex-col space-y-3 lg:space-y-4">
+          <!-- Market type switch -->
+          <div
+            id="market-type-switch"
+            class="flex items-center text-sm space-x-2"
           >
-            <p
-              id="portfolio-label"
-              class="text-textBase-darkGray text-sm md:text-md tracking-wide"
+            <button class="market-type-btn active" data-type="spot">
+              Spot
+            </button>
+            <button
+              class="market-type-btn text-textBase-darkGray hidden"
+              data-type="futures"
             >
-              Est. Total (USDT)
-            </p>
+              Futures
+            </button>
+          </div>
 
-            <!-- Total + Add Button -->
+          <!-- Market grid + list (unified container) -->
+          <div id="market-table" class="space-y-3">
+            <!-- Header -->
+            <div class="grid grid-cols-3 text-xs text-textBase-darkGray">
+              <span class="col-span-1">Name</span>
+              <span class="text-right">Last Price</span>
+              <span class="text-right">24h chg%</span>
+            </div>
+
+            <!-- List Body (same grid layout as header) -->
+            <div id="market-list-container" class="flex flex-col space-y-2">
+              <!-- <button class="market-row grid grid-cols-3 items-center">
+                <div class="col-span-1 flex items-center">
+                  <img src="" alt="BTC" class="hidden w-5 h-5" />
+                  <span class="font-medium text-md">
+                    BTC
+                    <span id="currency" class="text-xs">/USDT</span>
+                  </span>
+                </div>
+
+                <div class="col-span-1 flex flex-col text-right">
+                  <span class="text-right text-md">114,000</span>
+                  <span class="text-right text-xs text-textBase-darkGray">
+                    $114,000
+                  </span>
+                </div>
+
+                <div class="flex justify-end ml-2">
+                  <div
+                    class="text-right text-md bg-state-success text-textBase-primary px-3 py-1 rounded-md"
+                  >
+                    +1.24%
+                  </div>
+                </div>
+              </button> -->
+            </div>
+
+            <!-- View more btn section (just btm slide pannel is not inside) -->
             <div
-              id="portfolio-total-container"
-              class="flex items-center justify-between"
+              id="view-more-btn-wrapper"
+              class="flex items-center justify-center"
             >
-              <p
-                id="portfolio-total"
-                class="text-3xl md:text-3xl lg:text-4xl font-bold leading-tight"
-              >
-                $1.00
-              </p>
-
+              <!-- btn element -->
               <button
-                id="btn-add-holding"
-                class="text-sm font-semibold rounded-xl bg-brand/90 text-appBg-white px-3 py-1.5 hover:shadow-md active:scale-[0.98] transition-all duration-200 ease-in-out md:px-4 md:py-2 md:text-sm shadow-sm hover:bg-brand"
+                class="view-more-btn text-textBase-darkGray"
+                data-action="show-more-coins"
               >
-                Add Holdings
+                View more
               </button>
             </div>
           </div>
+        </div>
+      </div>
 
-          <!-- PROFIT / LOSS AREA  -->
-          <div id="portfolio-pnl" class="flex flex-col space-y-1">
-            <!-- Accumulated Profit -->
-            <div class="pnl-item flex items-center space-x-2">
-              <button
-                id="pnl-accumulated-label"
-                class="text-textBase-darkGray text-xs underline decoration-dotted underline-offset-4"
-              >
-                Accumulated Profit
-              </button>
-              <span
-                id="profit-accumulated"
-                class="text-[12px] text-state-success"
-              >
-                +$1 (+0.97%)
-              </span>
+      <!-- View more panel (initially offscreen) -->
+      <div
+        id="view-more-panel"
+        class="menu-overlay-style bg-brand-body translate-x-full dark:bg-black dark:text-appBg-white light:bg-appBg-white light:text-appBg-black"
+      >
+        <!-- panel container -->
+        <div id="view-more-panel-container" class="flex flex-col space-y-6">
+          <!-- view more nav bar wrapper -->
+          <div
+            id="view-more-navbar-wrapper"
+            class="flex items-center justify-center"
+          >
+            <!-- Return arrow -->
+            <div
+              data-action="return-home"
+              id="arrow-left-icon"
+              class="md:hidden cursor-pointer"
+            >
+              <svg class="w-6 h-6 text-light light:text-appBg-black">
+                <use xlink:href="#icon-arrow-left"></use>
+              </svg>
             </div>
 
-            <!-- Today's PNL -->
-            <div class="pnl-item flex items-center space-x-2">
-              <button
-                id="pnl-today-label"
-                class="text-textBase-darkGray text-xs underline decoration-dotted underline-offset-4"
-              >
-                Today's PNL
+            <!-- Panel header -->
+            <div class="flex items-center justify-center w-full">
+              <div class="flex items-center justify-center text-lg font-bold">
+                Rankings
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Tabs -->
+          <div
+            id="view-more-tabs"
+            class="flex text-sm space-x-6 overflow-x-auto whitespace-nowrap no-scrollbar"
+          ></div>
+
+          <div id="market-list" class="flex flex-col space-y-3 lg:space-y-4">
+            <!-- Market type switch -->
+            <div
+              id="market-type-switch"
+              class="flex items-center text-sm space-x-2"
+            >
+              <button class="market-type-btn active" data-type="spot">
+                Spot
               </button>
-              <span id="profit-today" class="text-[12px] text-state-success">
-                +$1.00 (+0.1%)
-              </span>
+              <button
+                class="market-type-btn text-textBase-darkGray hidden"
+                data-type="futures"
+              >
+                Futures
+              </button>
+            </div>
+
+            <!-- Market grid + list (unified container) -->
+            <div id="view-more-market-table" class="space-y-3">
+              <!-- Header -->
+              <div class="grid grid-cols-3 text-xs text-textBase-darkGray">
+                <span class="col-span-1">Name</span>
+                <span class="text-right">Last Price</span>
+                <span class="text-right">24h chg%</span>
+              </div>
+
+              <!-- List Body (same grid layout as header) -->
+              <div
+                id="view-more-list-container"
+                class="flex flex-col space-y-2"
+              ></div>
             </div>
           </div>
         </div>
