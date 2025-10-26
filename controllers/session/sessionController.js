@@ -4,7 +4,7 @@ import { viewManager } from '../viewManager/viewManager.js';
 
 const loaderEl = document.getElementById('loader');
 
-// On refresh, ensure the correct sections are still displayed 
+// On refresh, ensure the correct sections are still displayed
 const sessionController = {
   init() {
     // Show loader while Firebase checks session
@@ -21,14 +21,16 @@ const sessionController = {
         viewManager.hideAndShowRest(
           'auth-section',
           'dashboard-section',
-          'dashboard-header'
+          'dashboard-header',
+          'market-section'
         );
       } else {
         // User logged out — show auth screen, hide others
         viewManager.showndHideRest(
           'auth-section',
           'dashboard-section',
-          'dashboard-header'
+          'dashboard-header',
+          'market-section'
         );
       }
     });
