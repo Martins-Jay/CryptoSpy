@@ -26,7 +26,8 @@ class PortfolioSummary {
 
         <button
           id="btn-add-holding"
-          class="text-sm font-semibold rounded-xl bg-brand/90 text-appBg-white px-3 py-1.5 hover:shadow-md active:scale-[0.98] transition-all duration-200 ease-in-out md:px-4 md:py-2 md:text-sm shadow-sm hover:bg-brand"
+          class="text-sm font-semibold rounded-xl bg-brand/90 text-appBg-white px-3 py-1.5 hover:shadow-md active:scale-[0.98] transition-all duration-200 ease-in-out md:px-4 md:py-2 md:text-sm shadow-sm hover:bg-brand" 
+          data-action='show-add-holdings'
         >
           Add Holdings
         </button>

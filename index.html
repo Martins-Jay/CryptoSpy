@@ -2,7 +2,11 @@
 <html lang="en" class="h-full w-full">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+
     <title>CryptoSpy</title>
 
     <!-- Tailwind CSS build output -->
@@ -558,12 +562,18 @@
           <!-- PROFIT / LOSS AREA  -->
           <div id="portfolio-pnl" class="flex flex-col space-y-1"></div>
         </div>
+
+        <!-- Add holdings panel (initially offscreen template to be injected on page load -->
+        <div
+          id="add-holdings-panel"
+          class="menu-overlay-style h-full bg-brand-body z-50 light:bg-appBg-white dark:bg-appBg-black translate-x-full"
+        ></div>
       </div>
     </section>
 
     <section
       id="market-section"
-      class="flex flex-col w-full px-6 py-6 md:px-10 md:py-10 lg:flex-row lg:justify-center lg:space-x-10"
+      class="flex flex-col w-full px-6 py-6 md:px-10 md:py-10 lg:flex-row lg:justify-center lg:space-x-10 lg:px-10"
     >
       <!-- Intro section -->
       <div
@@ -574,7 +584,7 @@
       <!-- Market section -->
       <div
         id="market-container"
-        class="px-4 py-3 space-y-2 rounded-lg shadow-md bg-menuCard-glass light:bg-menuCard-menuLightBg md:px-6 md:py-5 md:rounded-xl md:shadow-md lg:px-10 lg:py-8 lg:space-y-4"
+        class="px-4 py-3 space-y-2 rounded-lg shadow-md bg-menuCard-glass light:bg-menuCard-menuLightBg md:px-6 md:py-5 md:rounded-xl md:shadow-md lg:px-6 lg:py-8 lg:space-y-4"
       >
         <!-- Category Tabs -->
         <div
@@ -610,32 +620,10 @@
             </div>
 
             <!-- List Body (same grid layout as header) -->
-            <div id="market-list-container" class="flex flex-col space-y-2">
-              <!-- <button class="market-row grid grid-cols-3 items-center">
-                <div class="col-span-1 flex items-center">
-                  <img src="" alt="BTC" class="hidden w-5 h-5" />
-                  <span class="font-medium text-md">
-                    BTC
-                    <span id="currency" class="text-xs">/USDT</span>
-                  </span>
-                </div>
-
-                <div class="col-span-1 flex flex-col text-right">
-                  <span class="text-right text-md">114,000</span>
-                  <span class="text-right text-xs text-textBase-darkGray">
-                    $114,000
-                  </span>
-                </div>
-
-                <div class="flex justify-end ml-2">
-                  <div
-                    class="text-right text-md bg-state-success text-textBase-primary px-3 py-1 rounded-md"
-                  >
-                    +1.24%
-                  </div>
-                </div>
-              </button> -->
-            </div>
+            <div
+              id="market-list-container"
+              class="flex flex-col space-y-2"
+            ></div>
 
             <!-- View more btn section (just btm slide pannel is not inside) -->
             <div
@@ -657,20 +645,17 @@
       <!-- View more panel (initially offscreen) -->
       <div
         id="view-more-panel"
-        class="menu-overlay-style bg-brand-body translate-x-full dark:bg-black dark:text-appBg-white light:bg-appBg-white light:text-appBg-black"
+        class="menu-overlay-style bg-brand-body translate-x-full light:bg-appBg-white light:text-appBg dark:bg-appBg-black"
       >
         <!-- panel container -->
         <div id="view-more-panel-container" class="flex flex-col space-y-6">
           <!-- view more nav bar wrapper -->
-          <div
-            id="view-more-navbar-wrapper"
-            class="flex items-center justify-center"
-          >
+          <div id="view-more-navbar-wrapper" class="flex">
             <!-- Return arrow -->
             <div
               data-action="return-home"
               id="arrow-left-icon"
-              class="md:hidden cursor-pointer"
+              class="cursor-pointer"
             >
               <svg class="w-6 h-6 text-light light:text-appBg-black">
                 <use xlink:href="#icon-arrow-left"></use>
@@ -1380,6 +1365,158 @@
         </div>
 
         <div id="font-options-container" class="flex flex-col space-y-2"></div>
+      </div>
+    </template>
+
+    <!-- Add holdings template -->
+    <template id="add-holdings-template">
+      <div
+        id="add-holdings-panel-container"
+        class="flex flex-col space-y-8 lg:space-y-10 bg-brand-body text-white light:bg-appBg-white light:text-textBase-textColor dark:bg-black dark:text-white md:bg-brand-body lg:bg-brand-body"
+      >
+        <!-- Add holdings nav bar wrapper -->
+        <div id="add-holdings-navbar-wrapper" class="flex flex-col space-y-8">
+          <!-- Return arrow -->
+          <div
+            data-action="close-holdings-panel"
+            id="arrow-left-icon"
+            class="cursor-pointer"
+          >
+            <svg class="w-6 h-6 text-light light:text-appBg-black">
+              <use xlink:href="#icon-arrow-left"></use>
+            </svg>
+          </div>
+
+          <!-- Panel header -->
+          <div class="flex flex-col space-y-2">
+            <!-- title -->
+            <div class="flex text-xl font-bold lg:text-3xl">
+              Add Your Holdings
+            </div>
+
+            <!-- description -->
+            <p class="text-xs text-textBase-darkGray lg:text-base">
+              Track your crypto positions securly. No wallet connection required
+              - just enter your trade details
+            </p>
+          </div>
+        </div>
+
+        <!-- holdings container -->
+        <div
+          class="flex flex-col bg-menuCard-glass light:bg-menuCard-menuLightBg shadow-md px-4 py-4 md:p-5 lg:p-10 rounded-md"
+        >
+          <form
+            id="holding-form"
+            class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-2 lg:gap-8"
+          >
+            <div class="col-span-1">
+              <!-- Consume the entire first grid col -->
+              <label for="" class="text-xs lg:text-base">Exchange Name</label>
+              <input
+                type="text"
+                class="col-span-2 holdings-input-style"
+                placeholder="Enter exchange name (e.g. Binance, Bybit, KuCoin)"
+              />
+            </div>
+
+            <div class="col-span-1">
+              <!-- Consume the entire first grid col -->
+              <label for="" class="text-xs">Coin Name</label>
+              <input
+                type="text"
+                class="col-span-2 holdings-input-style"
+                placeholder="Enter coin name or symbol (e.g. BTC, SOL)"
+              />
+            </div>
+
+            <div class="grid grid-cols-2 gap-8">
+              <div class="flex flex-col">
+                <label for="" class="text-xs">Buy Price (USDT)</label>
+                <input
+                  type="text"
+                  class="holdings-input-style"
+                  placeholder="e.g. 29,000"
+                />
+              </div>
+
+              <div class="flex flex-col">
+                <label for="" class="text-xs">Target Sell Price (USDT)</label>
+                <input
+                  type="text"
+                  class="holdings-input-style"
+                  placeholder="e.g. 29,000"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-8">
+              <div class="flex flex-col">
+                <label for="" class="text-xs">Amount Invested (USDT)</label>
+                <input
+                  type="text"
+                  class="holdings-input-style"
+                  placeholder="e.g. 100"
+                />
+              </div>
+
+              <div class="flex flex-col">
+                <label for="" class="text-xs">Quantity (auto)</label>
+                <input
+                  type="text"
+                  class="holdings-input-style  focus:border-0"
+                  placeholder="auto generated"
+                  readonly
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4">
+              <div>
+                <p
+                  class="text-sm font-bold underline decoration-dotted decoration-textBase-darkGray underline-offset-4"
+                >
+                  Optional Fields
+                </p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4 pb-4">
+                <div class="flex flex-col">
+                  <label for="" class="text-xs">Stop Loss (USDT)</label>
+                  <input
+                    type="text"
+                    class="holdings-input-style"
+                    placeholder="e.g. 100"
+                  />
+                </div>
+
+                <div class="flex flex-col">
+                  <label for="" class="text-xs">Take Profit (USDT)</label>
+                  <input
+                    type="text"
+                    class="holdings-input-style"
+                    placeholder="auto generated"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col space-y-2 md:pt-14 lg:pt-14">
+              <button
+                class="text-sm font-bold bg-brand light:text-appBg-white md:w-1/2 rounded-md px-4 py-2 lg:w-1/2"
+              >
+                Save & Track
+              </button>
+
+              <div>
+                <p class="text-xs text-textBase-darkGray">
+                  Once added, your holdings update automatically with live
+                  market data.
+                </p>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </template>
   </body>

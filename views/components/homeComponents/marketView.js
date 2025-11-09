@@ -80,7 +80,7 @@ class MarketView {
 
       if (!this.selectedTabEl) return;
 
-      document.documentElement.classList.contains('light')
+      observedEl.classList.contains('light')
         ? this.selectedTabEl.classList.add(...this.lightClasses)
         : this.selectedTabEl.classList.add(...this.darkClasses);
     });

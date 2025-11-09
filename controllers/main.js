@@ -10,11 +10,14 @@ import { portfolioController } from './home/portfolioController.js';
 import MarketModel from '../models/market/marketModel.js';
 import { marketController } from './home/market/marketController.js';
 import { viewMoreController } from './home/market/viewMoreController.js';
+import { addHoldings } from './home/market/addHoldingsController.js';
 
 const marketModel = new MarketModel();
 
 document.addEventListener('DOMContentLoaded', async () => {
   sessionController.init();
+  addHoldings.injectTemplatetoPanel()
+  addHoldings.init()
 
   // Load THE SPRITE AT ONCE
   loadSVGSprite();

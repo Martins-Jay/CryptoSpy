@@ -680,6 +680,89 @@ input:-webkit-autofill {
   }
 }
 
+.holdings-input-style{
+  width: 100%;
+  border-radius: 0.375rem;
+  border-width: 1px;
+  border-color: rgba(255,255,255,0.08);
+  background-color: rgba(255,255,255,0.08);
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.holdings-input-style::-moz-placeholder{
+  --tw-placeholder-opacity: 1;
+  color: rgb(163 163 163 / var(--tw-placeholder-opacity, 1));
+}
+
+.holdings-input-style::placeholder{
+  --tw-placeholder-opacity: 1;
+  color: rgb(163 163 163 / var(--tw-placeholder-opacity, 1));
+}
+
+.holdings-input-style{
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.holdings-input-style:focus{
+  --tw-border-opacity: 1;
+  border-color: rgb(245 158 11 / var(--tw-border-opacity, 1));
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.light .holdings-input-style{
+  --tw-border-opacity: 1;
+  border-color: rgb(163 163 163 / var(--tw-border-opacity, 1));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+}
+
+.light .holdings-input-style::-moz-placeholder{
+  --tw-placeholder-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-placeholder-opacity, 1));
+}
+
+.light .holdings-input-style::placeholder{
+  --tw-placeholder-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-placeholder-opacity, 1));
+}
+
+.light .holdings-input-style:focus{
+  --tw-border-opacity: 1;
+  border-color: rgb(245 158 11 / var(--tw-border-opacity, 1));
+}
+
+@media (min-width: 1024px){
+  .holdings-input-style{
+    --tw-bg-opacity: 1;
+    background-color: rgb(38 38 38 / var(--tw-bg-opacity, 1));
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .holdings-input-style::-moz-placeholder{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .holdings-input-style::placeholder{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+
 /* Autofill overrides - high specificity */
 
 input.input-style:-webkit-autofill {
@@ -821,6 +904,10 @@ input.input-style:-webkit-autofill {
 
 .col-span-1{
   grid-column: span 1 / span 1;
+}
+
+.col-span-2{
+  grid-column: span 2 / span 2;
 }
 
 .mx-1{
@@ -1070,6 +1157,14 @@ input.input-style:-webkit-autofill {
   cursor: pointer;
 }
 
+.grid-cols-1{
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .grid-cols-3{
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -1104,6 +1199,14 @@ input.input-style:-webkit-autofill {
 
 .justify-between{
   justify-content: space-between;
+}
+
+.gap-4{
+  gap: 1rem;
+}
+
+.gap-8{
+  gap: 2rem;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]){
@@ -1359,11 +1462,6 @@ input.input-style:-webkit-autofill {
   background-color: rgb(239 68 68 / var(--tw-bg-opacity, 1));
 }
 
-.bg-state-success{
-  --tw-bg-opacity: 1;
-  background-color: rgb(34 197 94 / var(--tw-bg-opacity, 1));
-}
-
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
@@ -1434,11 +1532,6 @@ input.input-style:-webkit-autofill {
   padding-right: 7px;
 }
 
-.py-1{
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-
 .py-1\.5{
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
@@ -1482,6 +1575,10 @@ input.input-style:-webkit-autofill {
 .py-\[3px\]{
   padding-top: 3px;
   padding-bottom: 3px;
+}
+
+.pb-4{
+  padding-bottom: 1rem;
 }
 
 .pt-2{
@@ -1558,6 +1655,11 @@ input.input-style:-webkit-autofill {
 .text-sm{
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-xl{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .text-xs{
@@ -1680,11 +1782,6 @@ input.input-style:-webkit-autofill {
   color: rgb(156 163 175 / var(--tw-text-opacity, 1));
 }
 
-.text-textBase-primary{
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
 .text-textBase-secondary{
   --tw-text-opacity: 1;
   color: rgb(209 213 219 / var(--tw-text-opacity, 1));
@@ -1707,6 +1804,10 @@ input.input-style:-webkit-autofill {
 
 .underline{
   text-decoration-line: underline;
+}
+
+.decoration-textBase-darkGray{
+  text-decoration-color: #A3A3A3;
 }
 
 .decoration-dotted{
@@ -1873,6 +1974,10 @@ input.input-style:-webkit-autofill {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.focus\:border-0:focus{
+  border-width: 0px;
+}
+
 .focus\:outline-none:focus{
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -1913,6 +2018,16 @@ input.input-style:-webkit-autofill {
   background-color: rgb(229 229 229 / var(--tw-bg-opacity, 1));
 }
 
+.light .light\:bg-appBg{
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity, 1));
+}
+
+.light .light\:bg-textBase-textColor{
+  --tw-bg-opacity: 1;
+  background-color: rgb(64 64 64 / var(--tw-bg-opacity, 1));
+}
+
 .light .light\:text-appBg-black{
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
@@ -1936,6 +2051,16 @@ input.input-style:-webkit-autofill {
 .light .light\:text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.light .light\:text-black{
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+}
+
+.light .light\:text-appBg{
+  --tw-text-opacity: 1;
+  color: rgb(23 23 23 / var(--tw-text-opacity, 1));
 }
 
 .dark\:bg-appBg-black:is(.dark *){
@@ -1974,6 +2099,10 @@ input.input-style:-webkit-autofill {
 
   .md\:order-3{
     order: 3;
+  }
+
+  .md\:col-span-2{
+    grid-column: span 2 / span 2;
   }
 
   .md\:mb-0{
@@ -2028,6 +2157,10 @@ input.input-style:-webkit-autofill {
     height: auto;
   }
 
+  .md\:w-1\/2{
+    width: 50%;
+  }
+
   .md\:w-10{
     width: 2.5rem;
   }
@@ -2056,6 +2189,10 @@ input.input-style:-webkit-autofill {
     cursor: pointer;
   }
 
+  .md\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .md\:flex-row{
     flex-direction: row;
   }
@@ -2074,6 +2211,10 @@ input.input-style:-webkit-autofill {
 
   .md\:justify-start{
     justify-content: flex-start;
+  }
+
+  .md\:gap-8{
+    gap: 2rem;
   }
 
   .md\:space-x-0 > :not([hidden]) ~ :not([hidden]){
@@ -2139,6 +2280,10 @@ input.input-style:-webkit-autofill {
     background-color: inherit;
   }
 
+  .md\:p-5{
+    padding: 1.25rem;
+  }
+
   .md\:px-10{
     padding-left: 2.5rem;
     padding-right: 2.5rem;
@@ -2191,6 +2336,10 @@ input.input-style:-webkit-autofill {
 
   .md\:pb-4{
     padding-bottom: 1rem;
+  }
+
+  .md\:pt-14{
+    padding-top: 3.5rem;
   }
 
   .md\:pt-6{
@@ -2314,6 +2463,10 @@ input.input-style:-webkit-autofill {
     height: 19rem;
   }
 
+  .lg\:w-1\/2{
+    width: 50%;
+  }
+
   .lg\:w-3\/4{
     width: 75%;
   }
@@ -2324,6 +2477,10 @@ input.input-style:-webkit-autofill {
 
   .lg\:w-\[280px\]{
     width: 280px;
+  }
+
+  .lg\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .lg\:flex-row{
@@ -2342,6 +2499,10 @@ input.input-style:-webkit-autofill {
     justify-content: center;
   }
 
+  .lg\:gap-8{
+    gap: 2rem;
+  }
+
   .lg\:space-x-0 > :not([hidden]) ~ :not([hidden]){
     --tw-space-x-reverse: 0;
     margin-right: calc(0px * var(--tw-space-x-reverse));
@@ -2352,6 +2513,12 @@ input.input-style:-webkit-autofill {
     --tw-space-x-reverse: 0;
     margin-right: calc(2.5rem * var(--tw-space-x-reverse));
     margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .lg\:space-y-10 > :not([hidden]) ~ :not([hidden]){
+    --tw-space-y-reverse: 0;
+    margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
   }
 
   .lg\:space-y-3 > :not([hidden]) ~ :not([hidden]){
@@ -2390,9 +2557,18 @@ input.input-style:-webkit-autofill {
     padding: 0px;
   }
 
+  .lg\:p-10{
+    padding: 2.5rem;
+  }
+
   .lg\:px-10{
     padding-left: 2.5rem;
     padding-right: 2.5rem;
+  }
+
+  .lg\:px-6{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .lg\:py-1{
@@ -2414,6 +2590,10 @@ input.input-style:-webkit-autofill {
     padding-top: 0px;
   }
 
+  .lg\:pt-14{
+    padding-top: 3.5rem;
+  }
+
   .lg\:pt-2{
     padding-top: 0.5rem;
   }
@@ -2421,6 +2601,11 @@ input.input-style:-webkit-autofill {
   .lg\:text-2xl{
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+
+  .lg\:text-3xl{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 
   .lg\:text-4xl{
@@ -2438,6 +2623,11 @@ input.input-style:-webkit-autofill {
 
   .lg\:text-\[13px\]{
     font-size: 13px;
+  }
+
+  .lg\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   .lg\:text-xl{

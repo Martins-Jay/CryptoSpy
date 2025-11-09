@@ -13,6 +13,10 @@
     @apply w-full text-white bg-appBg lg:bg-neutral-800 light:bg-appBg-white light:placeholder-textBase-muted light:text-textBase-darkGray border border-gray-500 placeholder-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:border-brand transition;
   }
 
+  .holdings-input-style {
+    @apply w-full p-2 text-xs text-white placeholder-textBase-darkGray bg-menuCard-glass lg:bg-neutral-800 light:bg-appBg-white light:border-textBase-darkGray light:placeholder-textBase-muted light:text-appBg-black border border-menuCard-glass rounded-md focus:outline-none focus:border-brand light:focus:border-brand transition lg:px-2 lg:py-3 lg:placeholder:text-sm;
+  }
+
   /* Autofill overrides - high specificity */
   input.input-style:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px #171717 inset !important;

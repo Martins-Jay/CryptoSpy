@@ -55,7 +55,6 @@ export default class MarketModel {
       this.#exchangeInfoCache = symbols;
       return symbols;
     } catch (err) {
-      console.warn('Binance symbols fetch failed:', err.message);
       this.#exchangeInfoCache = new Set();
       return this.#exchangeInfoCache;
     }
@@ -182,7 +181,6 @@ export default class MarketModel {
     if (this.#reconnectTimer) clearTimeout(this.#reconnectTimer);
 
     if (!Array.isArray(coinList) || coinList.length === 0) {
-      console.warn('No coins available for live updates.');
       return;
     }
 
@@ -193,7 +191,6 @@ export default class MarketModel {
       .map((pair) => pair.toLowerCase());
 
     if (!validPairs.length) {
-      console.warn('No valid Binance pairs found for live updates.');
       return;
     }
 
@@ -237,7 +234,6 @@ export default class MarketModel {
 
       this.#notifySubscribers({ symbol, price, change: changePercent });
     } catch (err) {
-      // console.error('WebSocket message parse error:', err);
     }
   }
 

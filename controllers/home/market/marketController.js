@@ -46,7 +46,6 @@ class MarketController {
     try {
       await this.loadTabData(tabName, value, id);
     } catch (err) {
-      console.warn(`Retrying ${tabName} after error:`, err);
       setTimeout(() => this.safeLoadTabData(tabName, value, id), this.retryDelay);
     }
   }
@@ -77,7 +76,6 @@ class MarketController {
         data = await this.model.fetchTrending(value);
         break;
       default:
-        console.warn(`Unknown tabName: ${tabName}`);
         return;
     }
 
