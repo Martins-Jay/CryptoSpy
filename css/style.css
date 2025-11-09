@@ -2018,14 +2018,9 @@ input.input-style:-webkit-autofill {
   background-color: rgb(229 229 229 / var(--tw-bg-opacity, 1));
 }
 
-.light .light\:bg-appBg{
-  --tw-bg-opacity: 1;
-  background-color: rgb(23 23 23 / var(--tw-bg-opacity, 1));
-}
-
-.light .light\:bg-textBase-textColor{
-  --tw-bg-opacity: 1;
-  background-color: rgb(64 64 64 / var(--tw-bg-opacity, 1));
+.light .light\:text-appBg{
+  --tw-text-opacity: 1;
+  color: rgb(23 23 23 / var(--tw-text-opacity, 1));
 }
 
 .light .light\:text-appBg-black{
@@ -2051,16 +2046,6 @@ input.input-style:-webkit-autofill {
 .light .light\:text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
-.light .light\:text-black{
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
-}
-
-.light .light\:text-appBg{
-  --tw-text-opacity: 1;
-  color: rgb(23 23 23 / var(--tw-text-opacity, 1));
 }
 
 .dark\:bg-appBg-black:is(.dark *){
@@ -2099,10 +2084,6 @@ input.input-style:-webkit-autofill {
 
   .md\:order-3{
     order: 3;
-  }
-
-  .md\:col-span-2{
-    grid-column: span 2 / span 2;
   }
 
   .md\:mb-0{
