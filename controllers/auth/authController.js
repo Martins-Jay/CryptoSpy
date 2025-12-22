@@ -4,9 +4,6 @@ import * as formValidator from '../../helpers/formValidator.js';
 import { updateUserInfo } from '../menu/mobileController/mobileController.js';
 import { greetingControllerObj } from '../home/greetingController.js';
 import { viewManager } from '../viewManager/viewManager.js';
-import * as domHelpers from '../../helpers/domHelpers.js';
-import { dashboardSectionEl } from '../../views/authView.js';
-import { authSectionEl } from '../../views/authView.js';
 
 const {
   loginForm,

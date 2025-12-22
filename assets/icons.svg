@@ -217,10 +217,55 @@
 			stroke-width="16"/>
   </symbol>
 
+	<!-- Home icon -->
+	<symbol id="icon-home" viewBox="0 0 256 256" >
+		<path
+			fill="currentColor"
+			d="M240,208H224V136l2.34,2.34A8,8,0,0,0,237.66,127L139.31,28.68a16,16,0,0,0-22.62,0L18.34,127a8,8,0,0,0,11.32,11.31L32,136v72H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM48,120l80-80,80,80v88H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48Zm96,88H112V160h32Z"
+		/>
+	</symbol>
+
+	<!-- Market icon -->
+	<symbol id="icon-markets" viewBox="0 0 256 256">
+		<rect x="40" y="100" width="20" height="108" rx="4" fill="currentColor"/>
+		<rect x="80" y="140" width="20" height="68" rx="4" fill="currentColor"/>
+		<rect x="120" y="80" width="20" height="128" rx="4" fill="currentColor"/>
+		<rect x="160" y="120" width="20" height="88" rx="4" fill="currentColor"/>
+		<rect x="200" y="60" width="20" height="148" rx="4" fill="currentColor"/>
+	</symbol>
+
+	<!-- Icon watchlist -->
+	<symbol id="icon-watchlist" viewBox="0 0 256 220">
+		<path
+			fill="currentColor"
+			d="M184,32H72A16,16,0,0,0,56,48V200a8,8,0,0,0,12.24,6.78L128,171.43l59.77,35.35A8,8,0,0,0,200,200V48A16,16,0,0,0,184,32Zm0,157.57-51.77-32.35a8,8,0,0,0-8.48,0L72,189.57V48H184Z"
+		/>
+	</symbol>
+
+	<!-- Holdings icon -->
+	<symbol id="icon-holdings" viewBox="0 0 256 220">
+		<ellipse cx="128" cy="160" rx="85" ry="24" fill="currentColor"/>
+		<ellipse cx="128" cy="112" rx="85" ry="24" fill="currentColor"/>
+		<ellipse cx="128" cy="64" rx="85" ry="24" fill="currentColor"/>
+	</symbol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 </svg>
-
-

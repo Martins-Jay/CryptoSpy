@@ -52,7 +52,8 @@
   </head>
 
   <body
-    class="flex flex-col h-full w-full bg-brand-body text-white light:bg-appBg-white light:text-textBase-textColor dark:bg-black dark:text-white md:bg-brand-body lg:bg-brand-body"
+    id="app-views"
+    class="relative flex flex-col h-full w-full bg-brand-body text-white light:bg-appBg-white light:text-textBase-textColor dark:bg-black dark:text-white md:bg-brand-body lg:bg-brand-body"
   >
     <!-- Loader overlay (hidden until active) -->
     <div
@@ -422,260 +423,180 @@
       </div>
     </section>
 
-    <!-- Dashboard main section -->
-    <section
-      data-screen="desktop"
-      id="dashboard-section"
-      class="hidden px-6 md:px-10"
-    >
-      <header
+    <!-- Home section -->
+    <section id="home-section">
+      <!-- Dashboard main section -->
+      <section
         data-screen="desktop"
-        id="header"
-        class="flex items-center justify-between py-4 md:py-6"
+        id="dashboard-section"
+        class="hidden px-6 md:px-10"
       >
-        <!-- Mobile menu button (grid icon) -->
-        <button id="menu-toggle-btn" class="md:hidden">
-          <!-- Grid menu icon -->
-          <svg class="w-7 h-7 text-light light:text-appBg-black">
-            <use xlink:href="./assets/icons.svg#grid-menu"></use>
-          </svg>
-        </button>
-
-        <!-- Left side: logo + left menu action btns(lg screens only) -->
-        <div class="hidden md:flex items-center justify-center space-x-4">
-          <!-- Logo -->
-          <div id="header-logo-wrapper" class="hidden md:flex items-baseline">
-            <span class="font-black text-2xl text-brand">Crypto</span>
-            <span id="cryptoSpy-logo" class="font-black text-brand text-2xl">
-              Spy
-            </span>
-          </div>
-
-          <!-- Injection point #1: desktop nav menu (e.g., Markets, News) -->
-          <div id="desktop-menu-container" class="hidden items-center"></div>
-        </div>
-
-        <!-- Right: Quick action icons (Visible for all screen sizes) -->
-        <div class="flex space-x-2 items-center">
-          <!-- Search button -->
-          <button class="svg-icon-border md:border-0">
-            <svg class="w-6 h-6 md:w-5 md:h-5">
-              <use xlink:href="#search-icon"></use>
+        <header
+          data-screen="desktop"
+          id="header"
+          class="flex items-center justify-between py-4 md:py-6"
+        >
+          <!-- Mobile menu button (grid icon) -->
+          <button id="menu-toggle-btn" class="md:hidden">
+            <!-- Grid menu icon -->
+            <svg class="w-7 h-7 text-light light:text-appBg-black">
+              <use xlink:href="./assets/icons.svg#grid-menu"></use>
             </svg>
           </button>
 
-          <!-- Notifications button -->
-          <button class="svg-icon-border md:border-0">
-            <svg class="w-6 h-6 md:w-5 md:h-5">
-              <use xlink:href="#bell"></use>
-            </svg>
-          </button>
-
-          <!-- Favorites button -->
-          <button class="svg-icon-border md:border-0">
-            <svg class="w-6 h-6 md:w-5 md:h-5">
-              <use xlink:href="#favorite"></use>
-            </svg>
-          </button>
-
-          <!-- Medium screen: hamburger menu -->
-          <div
-            id="medium-toggle-btn"
-            class="hidden md:flex lg:hidden"
-            aria-label="open menium settings"
-          >
-            <button
-              id="medium-menu-btn"
-              type="button"
-              class="flex items-center hamburger z-40 focus:outline-none mx-1"
-            >
-              <span class="hamburger-top light:bg-appBg-black"></span>
-              <span class="hamburger-middle light:bg-appBg-black"></span>
-              <span class="hamburger-bottom light:bg-appBg-black"></span>
-            </button>
-          </div>
-
-          <!-- Injection point #1: profile button + dropdown (desktop) -->
-          <div class="relative hidden lg:flex">
-            <!-- Nav profile icon -->
-            <button
-              data-action="profile-dropdown"
-              id="desktop-profile-icon"
-              class="dropdown-btn svg-icon-border md:border-0"
-            >
-              <!-- User icon -->
-              <svg class="w-5 h-5">
-                <use xlink:href="#icon-user-circle"></use>
-              </svg>
-            </button>
-
-            <!-- Desktop profile dropdown container-->
-            <div
-              id="nav-profile-dropdown"
-              class="dropdown-content absolute right-0 top-full opacity-0 pointer-events-none transition-all duration-200 easee-in-out"
-            ></div>
-          </div>
-
-          <!-- Injection point #2: settings button + dropdown (desktop) -->
-          <div class="relative hidden lg:flex">
-            <!-- Nav settings icon -->
-            <button
-              data-action="settings-dropdown"
-              id="desktop-settings-icon"
-              class="dropdown-btn svg-icon-border md:border-0"
-            >
-              <!-- Settings icon -->
-              <svg class="w-5 h-5">
-                <use xlink:href="#icon-gear"></use>
-              </svg>
-            </button>
-
-            <!-- Desktop settings dropdown container-->
-            <div
-              data-screen="desktop"
-              id="nav-settings-dropdown"
-              class="dropdown-content absolute right-0 top-full max-h-96 opacity-0 pointer-events-none transition-all duration-200 easee-in-out"
-            ></div>
-          </div>
-        </div>
-      </header>
-    </section>
-
-    <!-- Dashboard header section -->
-    <section id="dashboard-header" class="hidden pt-2 px-6 md:px-10">
-      <div
-        id="dashboard-header__container"
-        class="flex items-center justify-between rounded-2xl"
-      >
-        <div class="w-full flex flex-col space-y-4 md:space-y-4">
-          <!--  Greeting area  -->
-          <div id="greeting-container">
-            <!-- Greeting Message (Static placeholder — will be replaced by JS) -->
-          </div>
-
-          <!-- Portfolio summary  -->
-          <div
-            id="portfolio-summary"
-            class="flex flex-col justify-between mt-4 space-y-1"
-          ></div>
-
-          <!-- PROFIT / LOSS AREA  -->
-          <div id="portfolio-pnl" class="flex flex-col space-y-1"></div>
-        </div>
-
-        <!-- Add holdings panel (initially offscreen template to be injected on page load -->
-        <div
-          id="add-holdings-panel"
-          class="menu-overlay-style h-full bg-brand-body z-50 light:bg-appBg-white dark:bg-appBg-black translate-x-full"
-        ></div>
-      </div>
-    </section>
-
-    <section
-      id="market-section"
-      class="flex flex-col w-full px-6 py-6 md:px-10 md:py-10 lg:flex-row lg:justify-center lg:space-x-10 lg:px-10"
-    >
-      <!-- Intro section -->
-      <div
-        id="intro-container"
-        class="hidden md:flex lg:flex items-center px-6 space-x-4 md:pb-4 lg:w-3/4"
-      ></div>
-
-      <!-- Market section -->
-      <div
-        id="market-container"
-        class="px-4 py-3 space-y-2 rounded-lg shadow-md bg-menuCard-glass light:bg-menuCard-menuLightBg md:px-6 md:py-5 md:rounded-xl md:shadow-md lg:px-6 lg:py-8 lg:space-y-4"
-      >
-        <!-- Category Tabs -->
-        <div
-          id="market-tabs"
-          class="flex text-md space-x-6 overflow-x-auto whitespace-nowrap no-scrollbar"
-        ></div>
-
-        <!-- Market list -->
-        <div id="market-list" class="flex flex-col space-y-3 lg:space-y-4">
-          <!-- Market type switch -->
-          <div
-            id="market-type-switch"
-            class="flex items-center text-sm space-x-2"
-          >
-            <button class="market-type-btn active" data-type="spot">
-              Spot
-            </button>
-            <button
-              class="market-type-btn text-textBase-darkGray hidden"
-              data-type="futures"
-            >
-              Futures
-            </button>
-          </div>
-
-          <!-- Market grid + list (unified container) -->
-          <div id="market-table" class="space-y-3">
-            <!-- Header -->
-            <div class="grid grid-cols-3 text-xs text-textBase-darkGray">
-              <span class="col-span-1">Name</span>
-              <span class="text-right">Last Price</span>
-              <span class="text-right">24h chg%</span>
+          <!-- Left side: logo + left menu action btns(lg screens only) -->
+          <div class="hidden md:flex items-center justify-center space-x-4">
+            <!-- Logo -->
+            <div id="header-logo-wrapper" class="hidden md:flex items-baseline">
+              <span class="font-black text-2xl text-brand">Crypto</span>
+              <span id="cryptoSpy-logo" class="font-black text-brand text-2xl">
+                Spy
+              </span>
             </div>
 
-            <!-- List Body (same grid layout as header) -->
-            <div
-              id="market-list-container"
-              class="flex flex-col space-y-2"
-            ></div>
+            <!-- Injection point #1: desktop nav menu (e.g., Markets, News) -->
+            <div id="desktop-menu-container" class="hidden items-center"></div>
+          </div>
 
-            <!-- View more btn section (just btm slide pannel is not inside) -->
+          <!-- Right: Quick action icons (Visible for all screen sizes) -->
+          <div class="flex space-x-2 items-center">
+            <!-- Search button -->
+            <button class="svg-icon-border md:border-0">
+              <svg class="w-6 h-6 md:w-5 md:h-5">
+                <use xlink:href="#search-icon"></use>
+              </svg>
+            </button>
+
+            <!-- Notifications button -->
+            <button class="svg-icon-border md:border-0">
+              <svg class="w-6 h-6 md:w-5 md:h-5">
+                <use xlink:href="#bell"></use>
+              </svg>
+            </button>
+
+            <!-- Favorites button -->
+            <button class="svg-icon-border md:border-0">
+              <svg class="w-6 h-6 md:w-5 md:h-5">
+                <use xlink:href="#favorite"></use>
+              </svg>
+            </button>
+
+            <!-- Medium screen: hamburger menu -->
             <div
-              id="view-more-btn-wrapper"
-              class="flex items-center justify-center"
+              id="medium-toggle-btn"
+              class="hidden md:flex lg:hidden"
+              aria-label="open menium settings"
             >
-              <!-- btn element -->
               <button
-                class="view-more-btn text-textBase-darkGray"
-                data-action="show-more-coins"
+                id="medium-menu-btn"
+                type="button"
+                class="flex items-center hamburger z-40 focus:outline-none mx-1"
               >
-                View more
+                <span class="hamburger-top light:bg-appBg-black"></span>
+                <span class="hamburger-middle light:bg-appBg-black"></span>
+                <span class="hamburger-bottom light:bg-appBg-black"></span>
               </button>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- View more panel (initially offscreen) -->
-      <div
-        id="view-more-panel"
-        class="menu-overlay-style bg-brand-body translate-x-full light:bg-appBg-white light:text-appBg dark:bg-appBg-black"
-      >
-        <!-- panel container -->
-        <div id="view-more-panel-container" class="flex flex-col space-y-6">
-          <!-- view more nav bar wrapper -->
-          <div id="view-more-navbar-wrapper" class="flex">
-            <!-- Return arrow -->
+            <!-- Injection point #1: profile button + dropdown (desktop) -->
+            <div class="relative hidden lg:flex">
+              <!-- Nav profile icon -->
+              <button
+                data-action="profile-dropdown"
+                id="desktop-profile-icon"
+                class="dropdown-btn svg-icon-border md:border-0"
+              >
+                <!-- User icon -->
+                <svg class="w-5 h-5">
+                  <use xlink:href="#icon-user-circle"></use>
+                </svg>
+              </button>
+
+              <!-- Desktop profile dropdown container-->
+              <div
+                id="nav-profile-dropdown"
+                class="dropdown-content absolute right-0 top-full opacity-0 pointer-events-none transition-all duration-200 easee-in-out"
+              ></div>
+            </div>
+
+            <!-- Injection point #2: settings button + dropdown (desktop) -->
+            <div class="relative hidden lg:flex">
+              <!-- Nav settings icon -->
+              <button
+                data-action="settings-dropdown"
+                id="desktop-settings-icon"
+                class="dropdown-btn svg-icon-border md:border-0"
+              >
+                <!-- Settings icon -->
+                <svg class="w-5 h-5">
+                  <use xlink:href="#icon-gear"></use>
+                </svg>
+              </button>
+
+              <!-- Desktop settings dropdown container-->
+              <div
+                data-screen="desktop"
+                id="nav-settings-dropdown"
+                class="dropdown-content absolute right-0 top-full max-h-96 opacity-0 pointer-events-none transition-all duration-200 easee-in-out"
+              ></div>
+            </div>
+          </div>
+        </header>
+      </section>
+
+      <!-- Dashboard header section -->
+      <section id="dashboard-header" class="hidden pt-2 px-6 md:px-10">
+        <div
+          id="dashboard-header__container"
+          class="flex items-center justify-between rounded-2xl"
+        >
+          <div class="w-full flex flex-col space-y-4 md:space-y-4">
+            <!--  Greeting area  -->
+            <div id="greeting-container">
+              <!-- Greeting Message (Static placeholder — will be replaced by JS) -->
+            </div>
+
+            <!-- Portfolio summary  -->
             <div
-              data-action="return-home"
-              id="arrow-left-icon"
-              class="cursor-pointer"
-            >
-              <svg class="w-6 h-6 text-light light:text-appBg-black">
-                <use xlink:href="#icon-arrow-left"></use>
-              </svg>
-            </div>
+              id="portfolio-summary"
+              class="flex flex-col justify-between mt-4 space-y-1"
+            ></div>
 
-            <!-- Panel header -->
-            <div class="flex items-center justify-center w-full">
-              <div class="flex items-center justify-center text-lg font-bold">
-                Rankings
-              </div>
-            </div>
+            <!-- PROFIT / LOSS AREA  -->
+            <div id="portfolio-pnl" class="flex flex-col space-y-1"></div>
           </div>
 
+          <!-- Add holdings panel (initially offscreen template to be injected on page load -->
+          <div
+            id="add-holdings-panel"
+            class="menu-overlay-style h-full bg-brand-body z-50 light:bg-appBg-white dark:bg-appBg-black translate-x-full"
+          ></div>
+        </div>
+      </section>
+
+      <!-- Market section -->
+      <section
+        id="market-section"
+        class="flex flex-col w-full px-6 py-6 md:px-10 md:py-10 lg:flex-row lg:justify-center lg:space-x-10 lg:px-10"
+      >
+        <!-- Intro section -->
+        <div
+          id="intro-container"
+          class="hidden md:flex lg:flex items-center px-6 space-x-4 md:pb-4 lg:w-3/4"
+        ></div>
+
+        <!-- Market section -->
+        <div
+          id="market-container"
+          class="px-4 py-3 space-y-2 rounded-lg shadow-md bg-menuCard-glass light:bg-menuCard-menuLightBg md:px-6 md:py-5 md:rounded-xl md:shadow-md lg:px-6 lg:py-8 lg:space-y-4"
+        >
           <!-- Category Tabs -->
           <div
-            id="view-more-tabs"
-            class="flex text-sm space-x-6 overflow-x-auto whitespace-nowrap no-scrollbar"
+            id="market-tabs"
+            class="flex text-md space-x-6 overflow-x-auto whitespace-nowrap no-scrollbar"
           ></div>
 
+          <!-- Market list -->
           <div id="market-list" class="flex flex-col space-y-3 lg:space-y-4">
             <!-- Market type switch -->
             <div
@@ -694,7 +615,7 @@
             </div>
 
             <!-- Market grid + list (unified container) -->
-            <div id="view-more-market-table" class="space-y-3">
+            <div id="market-table" class="space-y-3">
               <!-- Header -->
               <div class="grid grid-cols-3 text-xs text-textBase-darkGray">
                 <span class="col-span-1">Name</span>
@@ -704,17 +625,226 @@
 
               <!-- List Body (same grid layout as header) -->
               <div
-                id="view-more-list-container"
+                id="market-list-container"
                 class="flex flex-col space-y-2"
               ></div>
+
+              <!-- View more btn section (just btm slide pannel is not inside) -->
+              <div
+                id="view-more-btn-wrapper"
+                class="flex items-center justify-center"
+              >
+                <!-- btn element -->
+                <button
+                  class="view-more-btn text-textBase-darkGray"
+                  data-action="show-more-coins"
+                >
+                  View more
+                </button>
+              </div>
             </div>
+          </div>
+        </div>
+
+        <!-- View more panel (initially offscreen) -->
+        <div
+          id="view-more-panel"
+          class="menu-overlay-style bg-brand-body translate-x-full light:bg-appBg-white light:text-appBg dark:bg-appBg-black"
+        >
+          <!-- panel container -->
+          <div id="view-more-panel-container" class="flex flex-col space-y-6">
+            <!-- view more nav bar wrapper -->
+            <div id="view-more-navbar-wrapper" class="flex">
+              <!-- Return arrow -->
+              <div
+                data-action="return-home"
+                id="arrow-left-icon"
+                class="cursor-pointer"
+              >
+                <svg class="w-6 h-6 text-light light:text-appBg-black">
+                  <use xlink:href="#icon-arrow-left"></use>
+                </svg>
+              </div>
+
+              <!-- Panel header -->
+              <div class="flex items-center justify-center w-full">
+                <div class="flex items-center justify-center text-lg font-bold">
+                  Rankings
+                </div>
+              </div>
+            </div>
+
+            <!-- Category Tabs -->
+            <div
+              id="view-more-tabs"
+              class="flex text-sm space-x-6 overflow-x-auto whitespace-nowrap no-scrollbar"
+            ></div>
+
+            <div id="market-list" class="flex flex-col space-y-3 lg:space-y-4">
+              <!-- Market type switch -->
+              <div
+                id="market-type-switch"
+                class="flex items-center text-sm space-x-2"
+              >
+                <button class="market-type-btn active" data-type="spot">
+                  Spot
+                </button>
+                <button
+                  class="market-type-btn text-textBase-darkGray hidden"
+                  data-type="futures"
+                >
+                  Futures
+                </button>
+              </div>
+
+              <!-- Market grid + list (unified container) -->
+              <div id="view-more-market-table" class="space-y-3">
+                <!-- Header -->
+                <div class="grid grid-cols-3 text-xs text-textBase-darkGray">
+                  <span class="col-span-1">Name</span>
+                  <span class="text-right">Last Price</span>
+                  <span class="text-right">24h chg%</span>
+                </div>
+
+                <!-- List Body (same grid layout as header) -->
+                <div
+                  id="view-more-list-container"
+                  class="flex flex-col space-y-2"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- Market sections -->
+    <section
+      id="markets"
+      class="section-name absolute inset-0 pb-4 bg-inherit hidden"
+    >
+      Markets
+    </section>
+
+    <!-- Watchlist sections -->
+    <section
+      id="watchlist"
+      class="section-name absolute inset-0 pb-4 bg-inherit hidden"
+    >
+      Watchlist
+    </section>
+
+    <!-- Holdings sections -->
+    <section
+      id="holdings"
+      class="section-name absolute inset-0 pb-4 bg-inherit hidden flex flex-col w-full px-6 py-6 md:px-10 md:py-10 lg:flex-row lg:justify-center lg:space-x-10 lg:px-10"
+    >
+      <div class="relative">
+        <!-- Cards track -->
+        <div
+          id="cards-track"
+          class="flex space-x-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-5 no-scrollbar"
+        >
+          <!-- cards injected by JScript -->
+          <!-- <div
+            class="relative flex flex-col w-full py-4 px-6 max-w-sm light:text-gray-900 dark:text-gray-100 text-white bg-menuCard-glass light:bg-menuCard-menuLightBg backdrop-blur-2xl rounded-3xl border border-appBg-white/10 dark:border-x-border-subtle shadow-xl space-y-4 hover:scale-[1.02] transition-all duration-300"
+          >
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div
+                  class="flex items-center justify-center w-10 h-10 rounded-full bg-brand/60 light:text-white font-black text-sm"
+                >
+                  BTC
+                </div>
+
+                <div>
+                  <h3
+                    class="text-md font-bold text-gray-400 dark:text-gray-400"
+                  >
+                    Exchange
+                  </h3>
+                  <p
+                    class="text-xs light:text-gray-900 dark:text-gray-100 text-white"
+                  >
+                    Binance
+                  </p>
+                </div>
+              </div>
+
+              <div></div>
+            </div>
+
+            <div
+              class="w-full h-px bg-gradient-to-r from-transparent via-brand/60 to-transparent"
+            ></div>
+
+            <div class="grid grid-cols-2 gap-y-3 text-sm">
+              <div>
+                <p class="text-gray-400 dark:text-gray-400 text-xs font-bold">
+                  Buy Price (USDT)
+                </p>
+                <p class="text-xs">$42,000</p>
+              </div>
+
+              <div>
+                <p class="text-gray-400 dark:text-gray-400 text-xs font-bold">
+                  Sell Price (USDT)
+                </p>
+                <p class="text-xs">$50,000</p>
+              </div>
+
+              <div>
+                <p class="text-gray-400 dark:text-gray-400 text-xs font-bold">
+                  Amount Invested
+                </p>
+                <p class="text-xs">$1,000</p>
+              </div>
+
+              <div>
+                <p class="text-gray-400 dark:text-gray-400 text-xs font-bold">
+                  Stop Loss (USDT)
+                </p>
+                <p class="text-xs text-red-500">$40,000</p>
+              </div>
+
+              <div class="">
+                <p class="text-gray-400 dark:text-gray-400 text-xs font-bold">
+                  Take Profit (USDT)
+                </p>
+                <p class="text-xs text-green-500">$52,000</p>
+              </div>
+            </div>
+
+            <div class="flex justify-end">
+              <button
+                class="px-4 py-2 rounded-full text-xs font-medium bg-red-500/80 dark:text-appBg-white text-white hover:bg-red-500/30 transition"
+              >
+                Delete
+              </button>
+            </div>
+          </div> -->
+        </div>
+
+        <!-- Scrollbar wrapper-->
+        <div class="flex justify-center mt-3">
+          <!-- Scrollbar track -->
+          <div class="w-32 h-1 rounded-full bg-appBg-white/10 overflow-hidden">
+            <!-- Scrollbar indicator -->
+            <div
+              id="scrollbar-indicator"
+              class="h-full w-1/4 bg-brand ease-out transition-all duration-300"
+            ></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- === Slide-out Container Panels ==== -->
+    <!-- Bottom navigation -->
+    <section id="bottom-navigation-container">
+      <!-- Jscript will inject html -->
+    </section>
 
+    <!-- === Slide-out Container Panels ==== -->
     <!-- Mobile menu -->
     <aside
       id="mobile-menu-container"
@@ -1410,24 +1540,39 @@
             id="holding-form"
             class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-2 lg:gap-8"
           >
-            <div class="col-span-1">
-              <!-- Consume the entire first grid col -->
-              <label for="" class="text-xs lg:text-base">Exchange Name</label>
+            <div class="relative col-span-1">
+              <label for="exchange-name" class="text-xs lg:text-base">
+                Exchange Name
+              </label>
               <input
                 type="text"
                 class="col-span-2 holdings-input-style"
                 placeholder="Enter exchange name (e.g. Binance, Bybit, KuCoin)"
+                id="exchange-name"
+                name="exchange-name"
               />
+
+              <ul
+                id="exchange-name-suggestions"
+                class="hidden absolute left-0 mt-1 w-1/2 max-h-56 overflow-y-auto rounded-md shadow-lg backdrop-blur-md bg-menuCard-glass light:bg-menuCard-menuLightBg z-50"
+              ></ul>
             </div>
 
-            <div class="col-span-1">
+            <div class="col-span-1 relative">
               <!-- Consume the entire first grid col -->
-              <label for="" class="text-xs">Coin Name</label>
+              <label for="" class="text-xs">Coin Symbol</label>
               <input
                 type="text"
                 class="col-span-2 holdings-input-style"
                 placeholder="Enter coin name or symbol (e.g. BTC, SOL)"
+                id="coin-name"
+                name="coin-name"
               />
+
+              <ul
+                id="coin-suggestions"
+                class="hidden absolute left-0 mt-1 max-h-40 w-1/2 overflow-y-auto rounded-md shadow-lg backdrop-blur-md bg-menuCard-glass light:bg-menuCard-menuLightBg z-50"
+              ></ul>
             </div>
 
             <div class="grid grid-cols-2 gap-8">
@@ -1437,6 +1582,8 @@
                   type="text"
                   class="holdings-input-style"
                   placeholder="e.g. 29,000"
+                  id="buy-price"
+                  name="buy-price"
                 />
               </div>
 
@@ -1446,6 +1593,8 @@
                   type="text"
                   class="holdings-input-style"
                   placeholder="e.g. 29,000"
+                  id="sell-price"
+                  name="sell-price"
                 />
               </div>
             </div>
@@ -1457,6 +1606,8 @@
                   type="text"
                   class="holdings-input-style"
                   placeholder="e.g. 100"
+                  id="amount-invested"
+                  name="amount-invested"
                 />
               </div>
 
@@ -1464,9 +1615,11 @@
                 <label for="" class="text-xs">Quantity (auto)</label>
                 <input
                   type="text"
-                  class="holdings-input-style  focus:border-0"
+                  class="holdings-input-style focus:border-0"
                   placeholder="auto generated"
                   readonly
+                  id="quantity"
+                  name="quantity"
                 />
               </div>
             </div>
@@ -1487,6 +1640,8 @@
                     type="text"
                     class="holdings-input-style"
                     placeholder="e.g. 100"
+                    id="stop-loss"
+                    name="stop-loss"
                   />
                 </div>
 
@@ -1496,6 +1651,8 @@
                     type="text"
                     class="holdings-input-style"
                     placeholder="auto generated"
+                    id="take-profit"
+                    name=""
                   />
                 </div>
               </div>
@@ -1503,6 +1660,7 @@
 
             <div class="flex flex-col space-y-2 md:pt-14 lg:pt-14">
               <button
+                id="add-holding-btn"
                 class="text-sm font-bold bg-brand light:text-appBg-white md:w-1/2 rounded-md px-4 py-2 lg:w-1/2"
               >
                 Save & Track
@@ -1521,3 +1679,4 @@
     </template>
   </body>
 </html>
+

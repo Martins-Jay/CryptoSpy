@@ -1,6 +1,5 @@
 class Greeting {
   constructor() {
-    this.parentEl = document.getElementById('greeting-container');
     this.nameEl = null;
     this.mobileNameEl = null;
   }
@@ -32,7 +31,7 @@ class Greeting {
   renderGreeting(userName, greetingText) {
     const htmlMarkup = this.markup(greetingText);
 
-    this.parentEl.innerHTML = htmlMarkup; // add html to the DOM
+    document.getElementById('greeting-container').innerHTML = htmlMarkup; // add html to the DOM
     this.nameEl = document.getElementById('user-display-name');
     this.mobileNameEl = document.getElementById('user-display-name-mobile');
 
