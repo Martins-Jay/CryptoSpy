@@ -8,7 +8,9 @@ export default class MarketModel {
   #baseUrl = 'https://api.coingecko.com/api/v3';
   #currency = 'usd';
 
-  constructor() {}
+  constructor() {
+    this.exchangeList = [];
+  }
 
   /* ============================================================
      SAFE FETCH WITH RETRIES
@@ -233,8 +235,7 @@ export default class MarketModel {
       }
 
       this.#notifySubscribers({ symbol, price, change: changePercent });
-    } catch (err) {
-    }
+    } catch (err) {}
   }
 
   /* ============================================================
@@ -273,8 +274,40 @@ export default class MarketModel {
       market_cap: coinObj.market_cap || 0,
     };
   }
+
+  /* ============================================================
+     FOR COIN SYMBOL INPUT AUTO SUGGESTION
+  ============================================================ */
+  async loadBinanceCoins() {
+    try {
+      const res = await fetch('https://api.binance.com/api/v3/exchangeInfo');
+      const dataObj = await res.json();
+
+      // We dont want duplicates in our array so we use Set. it accepts an iterable eg array and returns a new array
+      const coins = [
+        ...new Set(dataObj.symbols.map((symbol) => symbol.baseAsset)),
+      ];
+
+      return coins;
+    } catch (err) {
+      console.error('BINANCE LIST ERROR:', err);
+      return [];
+    }
+  }
+
+  /* ============================================================
+     FOR INPUT EXCHANGE NAMES SUGGESTION
+  ============================================================ */
+  async loadExchanges() {
+    try {
+      const res = await fetch(`${this.#baseUrl}/exchanges/list`)
+
+      if (!res.ok) throw new Error('Failed to fetch exchange list');
+
+      this.exchangeList = await res.json();
+      return this.exchangeList;
+    } catch (err) {
+      throw err;
+    }
+  }
 }
-
-
-
-

@@ -208,7 +208,6 @@ export function showMenu(screen) {
       contentArea?.classList.remove('opacity-0', 'invisible');
       contentArea?.classList.add('opacity-100', 'visible');
 
-      // Assign overlay click as a single handler (replace previous) to avoid duplicates
       if (overlayEl) {
         overlayEl.onclick = () => {
           aside.classList.add('invisible');
@@ -324,7 +323,6 @@ class MenuActions {
 }
 
 // ---------------------------------------------------------------------
-// OnLogout: preserve API with original method names
 class OnLogout {
   mobileDevice() {
     menuElements.mobileSettings.aside?.classList.add('hidden');
