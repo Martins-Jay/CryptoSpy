@@ -21,31 +21,11 @@ const marketModel = new MarketModel();
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    // const sampleCards = [
-    //   {
-    //     symbol: 'BTC',
-    //     exchange: 'Binance',
-    //     buyPrice: '$42,000',
-    //     sellPrice: '$50,000',
-    //     amountInvested: '$1,000',
-    //     stopLoss: '$40,000',
-    //     takeProfit: '$52,000',
-    //   },
-    //   {
-    //     symbol: 'ETH',
-    //     exchange: 'Coinbase',
-    //     buyPrice: '$3,200',
-    //     sellPrice: '$3,600',
-    //     amountInvested: '$500',
-    //     stopLoss: '$3,000',
-    //     takeProfit: '$3,800',
-    //   },
-    // ];
-
     loaderEl.classList.remove('hidden');
     bottomNav.renderBottomNav();
 
     holdingsView.initScrollListener();
+     holdingsView.showSkeletons(3)
 
     sessionController.init();
     holdingsPanel.init();
@@ -76,7 +56,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     });
   } catch (err) {
-    // console.error('App initialization failed:', err);
   } finally {
     loaderEl.classList.add('hidden');
   }
