@@ -12,7 +12,7 @@ class HomePublisher {
       if (!targetEl) return;
 
       const action = targetEl.dataset.action;
-      console.log(action);
+
       publish(this._channel, { action });
     });
   }
