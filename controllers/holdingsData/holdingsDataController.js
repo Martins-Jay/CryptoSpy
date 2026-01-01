@@ -35,6 +35,7 @@ class HoldingsDataController {
   }
 
   async loadHoldings(userUid) {
+   
     const holdings = await holdingModel.fetchHoldings(userUid);
 
     // send data to the view

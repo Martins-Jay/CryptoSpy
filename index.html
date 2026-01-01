@@ -53,7 +53,7 @@
 
   <body
     id="app-views"
-    class="relative flex flex-col h-full w-full bg-brand-body text-white light:bg-appBg-white light:text-textBase-textColor dark:bg-black dark:text-white md:bg-brand-body lg:bg-brand-body"
+    class="relative flex flex-col h-full w-full overflow-y-auto overscroll-y-none bg-brand-body text-white light:bg-appBg-white light:text-textBase-textColor dark:bg-black dark:text-white md:bg-brand-body lg:bg-brand-body"
   >
     <!-- Loader overlay (hidden until active) -->
     <div
@@ -588,7 +588,7 @@
         <!-- Market section -->
         <div
           id="market-container"
-          class="px-4 py-3 space-y-2 rounded-lg shadow-md bg-menuCard-glass light:bg-menuCard-menuLightBg md:px-6 md:py-5 md:rounded-xl md:shadow-md lg:px-6 lg:py-8 lg:space-y-4"
+          class="px-4 py-3 mb-10 space-y-2 rounded-lg shadow-md bg-menuCard-glass light:bg-menuCard-menuLightBg md:px-6 md:py-5 md:rounded-xl md:shadow-md lg:px-6 lg:py-8 lg:space-y-4"
         >
           <!-- Category Tabs -->
           <div
@@ -739,100 +739,63 @@
       id="holdings"
       class="section-name absolute inset-0 pb-4 bg-inherit hidden flex flex-col w-full px-6 py-6 md:px-10 md:py-10 lg:flex-row lg:justify-center lg:space-x-10 lg:px-10"
     >
+      <!-- ===== Header: Portfolio Overview ===== -->
+      <div
+        class="mb-6 flex flex-col md:flex-row md:justify-between md:items-center gap-6"
+      >
+        <!-- Title & Summary -->
+        <div class="flex flex-col space-y-6">
+          <div class="section-title">
+            <h2 class="text-xl font-bold">Overview</h2>
+          </div>
+
+          <div id="holdings-summary" class="flex flex-col space-y-2">
+            <p
+              id="portfolio-label"
+              class="text-textBase-darkGray text-xs md:text-md tracking-wide"
+            >
+              Est. Total (USDT)
+            </p>
+
+            <!-- Total + Add Button -->
+            <div
+              id="portfolio-total-container"
+              class="flex items-center justify-between"
+            >
+              <p
+                id="portfolio-total"
+                class="text-3xl md:text-xl lg:text-4xl font-bold leading-tight"
+              >
+                $16,253.00
+              </p>
+            </div>
+
+            <div id="asset-count" class="flex text-xs text-textBase-darkGray">
+              Asset Count: 1
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="relative">
+        <div class="flex font-semibold mb-4">Account</div>
         <!-- Cards track -->
         <div
           id="cards-track"
-          class="flex space-x-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-5 no-scrollbar"
+          class="flex flex-nowrap space-x-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-5 no-scrollbar"
         >
           <!-- cards injected by JScript -->
-          <!-- <div
-            class="relative flex flex-col w-full py-4 px-6 max-w-sm light:text-gray-900 dark:text-gray-100 text-white bg-menuCard-glass light:bg-menuCard-menuLightBg backdrop-blur-2xl rounded-3xl border border-appBg-white/10 dark:border-x-border-subtle shadow-xl space-y-4 hover:scale-[1.02] transition-all duration-300"
-          >
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <div
-                  class="flex items-center justify-center w-10 h-10 rounded-full bg-brand/60 light:text-white font-black text-sm"
-                >
-                  BTC
-                </div>
-
-                <div>
-                  <h3
-                    class="text-md font-bold text-gray-400 dark:text-gray-400"
-                  >
-                    Exchange
-                  </h3>
-                  <p
-                    class="text-xs light:text-gray-900 dark:text-gray-100 text-white"
-                  >
-                    Binance
-                  </p>
-                </div>
-              </div>
-
-              <div></div>
-            </div>
-
-            <div
-              class="w-full h-px bg-gradient-to-r from-transparent via-brand/60 to-transparent"
-            ></div>
-
-            <div class="grid grid-cols-2 gap-y-3 text-sm">
-              <div>
-                <p class="text-gray-400 dark:text-gray-400 text-xs font-bold">
-                  Buy Price (USDT)
-                </p>
-                <p class="text-xs">$42,000</p>
-              </div>
-
-              <div>
-                <p class="text-gray-400 dark:text-gray-400 text-xs font-bold">
-                  Sell Price (USDT)
-                </p>
-                <p class="text-xs">$50,000</p>
-              </div>
-
-              <div>
-                <p class="text-gray-400 dark:text-gray-400 text-xs font-bold">
-                  Amount Invested
-                </p>
-                <p class="text-xs">$1,000</p>
-              </div>
-
-              <div>
-                <p class="text-gray-400 dark:text-gray-400 text-xs font-bold">
-                  Stop Loss (USDT)
-                </p>
-                <p class="text-xs text-red-500">$40,000</p>
-              </div>
-
-              <div class="">
-                <p class="text-gray-400 dark:text-gray-400 text-xs font-bold">
-                  Take Profit (USDT)
-                </p>
-                <p class="text-xs text-green-500">$52,000</p>
-              </div>
-            </div>
-
-            <div class="flex justify-end">
-              <button
-                class="px-4 py-2 rounded-full text-xs font-medium bg-red-500/80 dark:text-appBg-white text-white hover:bg-red-500/30 transition"
-              >
-                Delete
-              </button>
-            </div>
-          </div> -->
         </div>
 
         <!-- Scrollbar wrapper-->
         <div class="flex justify-center mt-3">
           <!-- Scrollbar track -->
-          <div class="w-32 h-1 rounded-full bg-appBg-white/10 overflow-hidden">
-            <!-- Scrollbar indicator -->
+          <div
+            class="relative w-full max-w-[30vw] h-1 rounded-full bg-appBg-white/10 overflow-hidden"
+          >
             <div
               id="scrollbar-indicator"
-              class="h-full w-1/4 bg-brand ease-out transition-all duration-300"
+              class="absolute left-0 top-0 h-full bg-brand transition-[left,width] duration-200"
             ></div>
           </div>
         </div>
@@ -1679,4 +1642,3 @@
     </template>
   </body>
 </html>
-

@@ -40,12 +40,12 @@ class HoldingsPanelView {
       const formData = {
         exchangeName: this.$('exchange-name').value.trim(),
         coinSymbol: this.$('coin-name').value.trim().toUpperCase(),
-        buyPrice: +this.$('buy-price').value,
-        sellPrice: +this.$('sell-price').value,
-        targetPrice: +this.$('sell-price').value,
-        amountInvested: +this.$('amount-invested').value,
-        stopLoss: +this.$('stop-loss').value,
-        takeProfit: +this.$('take-profit').value,
+        buyPrice: +this.$('buy-price').value || 0,
+        sellPrice: +this.$('sell-price').value || 0,
+        targetPrice: +this.$('sell-price').value || 0, // same as sellPrice
+        amountInvested: +this.$('amount-invested').value || 0,
+        stopLoss: +this.$('stop-loss').value || 0,
+        takeProfit: +this.$('take-profit').value || 0,
       };
 
       callback(formData);
