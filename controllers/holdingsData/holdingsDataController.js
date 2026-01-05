@@ -40,8 +40,6 @@ class HoldingsDataController {
 
     // send data to the view
     holdingsView.loadCards(holdings)
-    
-    console.log('Holdings from Firestore:', holdings);
   }
 
   initSubmitToFirebase() {
