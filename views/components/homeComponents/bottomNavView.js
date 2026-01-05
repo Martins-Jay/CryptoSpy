@@ -71,7 +71,6 @@ class BottomNavigation {
   setActiveTab(targetEl) {
     const buttonEls = this.container?.querySelectorAll('.bottom-nav-btn');
 
-
     buttonEls.forEach((btnEl) => {
       const svgUseEL = btnEl.querySelector('use');
       const textEl = btnEl.querySelector('p');
@@ -79,7 +78,7 @@ class BottomNavigation {
       if (btnEl === targetEl) {
         svgUseEL.classList.add('text-brand');
         svgUseEL.classList.remove('text-textBase-darkGray');
-        textEl.classList.add('text-white');
+        textEl.classList.add('dark:text-white');
         textEl.classList.remove('text-textBase-darkGray');
       } else {
         svgUseEL.classList.remove('text-brand');
