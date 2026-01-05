@@ -2,6 +2,66 @@ class Holdings {
   constructor() {
     this.cardsContainer = document.getElementById('cards-track');
     this.scrollbarIndicator = document.getElementById('scrollbar-indicator');
+    this.holdingsSummaryWrapper = document.getElementById(
+      'holdings-summary-wrapper'
+    );
+  }
+
+  fetchAssetCount(holdings) {
+    const accessCountEl = document.getElementById('value-location');
+    if (!accessCountEl) return;
+
+    // accessCountEl.classList.remove('animate-pulse', 'bg-gray-400', 'w-6', 'h-3')
+
+    // accessCountEl.textContent = holdings.length
+    // accessCountEl.classList.add('ml-1 font-bold text-white')
+
+    accessCountEl.outerHTML = `
+    <span class="ml-1 font-bold">${holdings.length}</span>
+  `;
+  }
+
+  summaryTemplate() {
+    return `
+      <div class="section-title">
+        <h2 class="text-xl font-bold">Overview</h2>
+      </div>
+
+      <div id="holdings-summary" class="flex flex-col space-y-2">
+        <p
+          id="portfolio-label"
+          class="text-textBase-darkGray text-xs md:text-md tracking-wide"
+        >
+          Est. Total (USDT)
+        </p>
+ 
+        <!-- Total-->
+        <div
+          id="portfolio-total-container"
+          class="flex items-center justify-between"
+        >
+          <p
+            id="portfolio-total"
+            class="text-3xl md:text-xl lg:text-4xl font-bold leading-tight"
+          >
+            $16,253.00
+          </p>
+        </div>
+
+        <div id="asset-count" class="flex text-xs text-textBase-darkGray">
+          <div class="flex items-center justify-center">
+            <div>Asset Count:</div>
+          
+            <div id='value-location' class="flex bg-gray-400 w-6 h-3 ml-1 rounded-3xl animate-pulse"></div>
+          </div>
+          
+        </div>
+      </div>
+    `;
+  }
+
+  injectSummaryTemplate() {
+    this.holdingsSummaryWrapper.innerHTML = this.summaryTemplate();
   }
 
   _createSkeletonCard() {
@@ -143,8 +203,15 @@ class Holdings {
 
   /** Load multiple cards */
   loadCards(cardsArray) {
-    this.cardsContainer.innerHTML = ''; // clear existing cards
+    if (cardsArray.length === 0) return;
+
+    this.cardsContainer.innerHTML = ''; // clear existing shadow cards
+
     cardsArray.forEach((cardData) => this.addCard(cardData));
+
+    // Hydrate asset count AFTER DOM exists
+    this.fetchAssetCount(cardsArray);
+
     this.initScrollListener(); // update scrollbar after cards are added
   }
 
@@ -202,6 +269,12 @@ class Holdings {
     // -----------------------------
     indicator.style.width = `${indicatorWidthPercent}%`;
     indicator.style.left = `${indicatorLeftPercent}%`;
+  }
+
+  initMethods() {
+    this.injectSummaryTemplate();
+    this.initScrollListener();
+    this.showSkeletons(3);
   }
 }
 

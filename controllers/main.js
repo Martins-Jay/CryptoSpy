@@ -24,8 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     loaderEl.classList.remove('hidden');
     bottomNav.renderBottomNav();
 
-    holdingsView.initScrollListener();
-     holdingsView.showSkeletons(3)
+    holdingsView.initMethods();
 
     sessionController.init();
     holdingsPanel.init();
@@ -51,8 +50,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     MenuController.init();
 
     onAuthStateChanged(auth, async (user) => {
-      if (user) {
+      if (!user) return;
+
+      try {
         await holdingsDataController.loadHoldings(user.uid);
+      } catch (err) {
+        console.error('Failed to load holdings:', err.message);
       }
     });
   } catch (err) {
