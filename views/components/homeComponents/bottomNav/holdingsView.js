@@ -11,14 +11,9 @@ class Holdings {
     const accessCountEl = document.getElementById('value-location');
     if (!accessCountEl) return;
 
-    // accessCountEl.classList.remove('animate-pulse', 'bg-gray-400', 'w-6', 'h-3')
-
-    // accessCountEl.textContent = holdings.length
-    // accessCountEl.classList.add('ml-1 font-bold text-white')
-
     accessCountEl.outerHTML = `
-    <span class="ml-1 font-bold">${holdings.length}</span>
-  `;
+      <span class="ml-1 font-bold">${holdings.length}</span>
+    `;
   }
 
   summaryTemplate() {
@@ -68,17 +63,17 @@ class Holdings {
     const skeleton = document.createElement('div');
 
     skeleton.className = `
-      flex flex-col py-4 px-6 w-[80vw] max-w-sm bg-gray-300 dark:bg-gray-700 rounded-3xl animate-pulse
+      flex flex-col py-4 px-6 w-[90vw] bg-gray-300 dark:bg-gray-700 rounded-3xl animate-pulse
       space-y-4
     `;
 
     skeleton.innerHTML = `
       <div class="flex">
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-5">
           <div class="w-10 h-10 rounded-full bg-gray-400 dark:bg-gray-600"></div>
           <div class="flex flex-col gap-1">
-            <div class="h-3 w-40 bg-gray-400 dark:bg-gray-600 rounded"></div>
-            <div class="h-2 w-14 bg-gray-400 dark:bg-gray-600 rounded"></div>
+            <div class="h-6 w-40 bg-gray-400 dark:bg-gray-600 rounded"></div>
+            <div class="h-6 w-14 bg-gray-400 dark:bg-gray-600 rounded"></div>
           </div>
         </div>
       </div>
@@ -154,11 +149,11 @@ class Holdings {
   createCard(cardData) {
     // Container for single card
     const cardWrapperEl = document.createElement('div');
-    cardWrapperEl.className = 'flex flex-row snap-start';
+    cardWrapperEl.className = 'flex flex snap-start';
 
     //hover:scale-[1.02]
     cardWrapperEl.innerHTML = `
-      <div class="flex flex-col py-4 px-6 w-[80vw] light:text-gray-900 dark:text-gray-100 text-white bg-menuCard-glass light:bg-menuCard-menuLightBg backdrop-blur-2xl rounded-3xl border border-appBg-white/10 dark:border-x-border-subtle shadow-md space-y-4 transition-all duration-300"> 
+      <div class="flex flex-col py-4 px-6 w-[90vw] max-w-[80vw] md:max-w-[40vw] lg:max-w-[30vw] light:text-gray-900 dark:text-gray-100 text-white bg-menuCard-glass light:bg-menuCard-menuLightBg backdrop-blur-2xl rounded-3xl border border-appBg-white/10 dark:border-x-border-subtle shadow-md space-y-4 transition-all duration-300"> 
 
         <!-- Top Header -->
         <div class="flex items-center justify-between">
@@ -189,6 +184,7 @@ class Holdings {
             Delete
           </button>
         </div>
+      </div>
     `;
 
     return cardWrapperEl;
