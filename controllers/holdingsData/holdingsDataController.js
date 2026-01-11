@@ -40,6 +40,9 @@ class HoldingsDataController {
 
     // send data to the view
     holdingsView.loadCards(holdings)
+
+    // send data to addHoldingsView
+    holdingsPanelView.getHoldings(holdings)
   }
 
   initSubmitToFirebase() {

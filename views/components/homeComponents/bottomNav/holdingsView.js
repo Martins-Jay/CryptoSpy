@@ -149,7 +149,7 @@ class Holdings {
   createCard(cardData) {
     // Container for single card
     const cardWrapperEl = document.createElement('div');
-    cardWrapperEl.className = 'flex flex snap-start';
+    cardWrapperEl.className = 'flex snap-start';
 
     //hover:scale-[1.02]
     cardWrapperEl.innerHTML = `
