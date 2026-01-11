@@ -2481,6 +2481,10 @@ input.input-style:-webkit-autofill {
     justify-content: flex-start;
   }
 
+  .md\:justify-between{
+    justify-content: space-between;
+  }
+
   .md\:gap-8{
     gap: 2rem;
   }
