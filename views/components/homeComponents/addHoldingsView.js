@@ -1,7 +1,29 @@
+import { holdingsView } from './bottomNav/holdingsView.js';
+import { holdingsDataController } from '../../../controllers/holdingsData/holdingsDataController.js';
+import { onAuthStateChanged, auth } from '../../../firebase/firebaseInit.js';
+import { holdingModel } from '../../../models/holdings/holdingsModel.js';
+
 class HoldingsPanelView {
   constructor() {
     this.$ = (id) => document.getElementById(id);
     this.bottomNav = null;
+  }
+
+  init() {
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) return
+
+      this.user = user;
+    })
+  }
+
+  async loadHoldings() {
+     holdingsView.showSkeletons()
+
+     const holdings = await holdingModel.fetchHoldings(this.user.uid)
+     this.holdings = holdings;
+
+     holdingsView.loadCards(holdings)
   }
 
   toggleVisibility() {
@@ -11,15 +33,21 @@ class HoldingsPanelView {
     // Check if panel is currently hidden
     const isPanelHidden = panel.classList.contains('translate-x-full');
 
+    console.log(this.holdings);
+
     // Toggle panel
     panel.classList.toggle('translate-x-full');
 
     // Toggle bottom nav in sync
-    this.bottomNav.classList.toggle('translate-y-full', isPanelHidden); // class (i.e first arg) is added if true, else removed
+    this.bottomNav.classList.toggle('translate-y-full', isPanelHidden); // first arg is added if true, else removed
 
     setTimeout(() => {
       this._resetForm();
     }, 500);
+
+    console.log(this.user, this.holdings);
+    this.init()
+    this.loadHoldings()
   }
 
   _resetForm() {

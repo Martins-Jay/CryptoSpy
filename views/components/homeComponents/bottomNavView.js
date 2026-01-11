@@ -90,7 +90,7 @@ class BottomNavigation {
   }
 
   switchView(activeBottomNav) {
-    const sectionNameEls = document.querySelectorAll('.section-name');
+    const sectionNameEls = document.querySelectorAll('.section-wrapper');
 
     sectionNameEls.forEach((sectionNameEl) => {
       if (sectionNameEl.id === `${activeBottomNav}`) {

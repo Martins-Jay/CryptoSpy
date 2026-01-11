@@ -737,7 +737,7 @@
     <!-- Holdings sections -->
     <section
       id="holdings"
-      class="section-name absolute inset-0 pb-4 bg-inherit hidden flex flex-col w-full px-6 py-6 md:p-10 lg:flex lg:static lg:px-10 lg:flex-row"
+      class="section-wrapper absolute inset-0 pb-4 bg-inherit hidden flex flex-col w-full px-6 py-6 md:p-10 lg:flex lg:static lg:px-10 lg:flex-row"
     >
       <div id="group-1" class="lg:max-w-[64vw]">
         <!-- ===== Header: Portfolio Overview ===== -->
@@ -746,42 +746,16 @@
           <div
             id="holdings-summary-wrapper"
             class="flex flex-col space-y-6 lg:hidden"
-          >
-            <!-- <div class="section-title">
-            <h2 class="text-xl font-bold">Overview</h2>
-          </div>
-
-          <div id="holdings-summary" class="flex flex-col space-y-2">
-            <p
-              id="portfolio-label"
-              class="text-textBase-darkGray text-xs md:text-md tracking-wide"
-            >
-              Est. Total (USDT)
-            </p>
-
-            
-            <div
-              id="portfolio-total-container"
-              class="flex items-center justify-between"
-            >
-              <p
-                id="portfolio-total"
-                class="text-3xl md:text-xl lg:text-4xl font-bold leading-tight"
-              >
-                $16,253.00
-              </p>
-            </div>
-
-            <div id="asset-count" class="flex text-xs text-textBase-darkGray">
-              Asset Count: 1
-            </div>
-          </div> -->
-          </div>
+          ></div>
         </div>
 
         <div class="relative">
-          <div class="flex font-semibold mb-4 lg:text-3xl lg:mb-6">
-            <span class="hidden lg:flex lg:font-extrabold lg:text-brand lg:mr-2">8</span>
+          <div class="flex font-semibold mb-4 lg:text-3xl lg:mb-10">
+            <span
+              class="hidden lg:flex lg:font-extrabold lg:text-brand lg:mr-2"
+            >
+              8
+            </span>
             <span class="">Active Holdings</span>
           </div>
           <!-- Cards track -->
@@ -796,7 +770,7 @@
           <div class="flex justify-center mt-3">
             <!-- Scrollbar track -->
             <div
-              class="relative w-full max-w-[30vw] h-1 rounded-full bg-appBg-white/10 overflow-hidden"
+              class="relative w-full max-w-[30vw] h-1 rounded-full bg-appBg-white/5 overflow-hidden"
             >
               <div
                 id="scrollbar-indicator"
